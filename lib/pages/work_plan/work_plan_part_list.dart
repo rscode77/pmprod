@@ -6,8 +6,8 @@ import 'package:pmprod/styles/app_decoration.dart';
 import 'package:pmprod/styles/app_dimensions.dart';
 
 class WorkPlanPartList extends StatefulWidget {
-  final Function(PartDetailsModel) onPartPressed;
-  final List<PartDetailsModel> partTabList;
+  final Function(PartDetailModel) onPartPressed;
+  final List<PartDetailModel> partTabList;
 
   const WorkPlanPartList({
     super.key,
@@ -54,7 +54,7 @@ class _WorkPlanPartListState extends State<WorkPlanPartList> {
     );
   }
 
-  Widget _buildPartTabListElement({required PartDetailsModel part}) {
+  Widget _buildPartTabListElement({required PartDetailModel part}) {
     return InkWell(
       onTap: () => widget.onPartPressed(part),
       child: Container(

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:pmprod/pages/bloc_page_state.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pmprod/pages/part_details/bloc/part_details_bloc.dart';
-import 'package:pmprod/pages/part_details/tabs/part_list_tab.dart';
+import 'package:pmprod/pages/part_details/tabs/draw_tab.dart';
+import 'package:pmprod/pages/part_details/tabs/realization_tab.dart';
+import 'package:pmprod/pages/part_details/tabs/status_tab.dart';
 
 class PartDetailPage extends StatefulWidget {
   const PartDetailPage({super.key});
@@ -10,7 +12,15 @@ class PartDetailPage extends StatefulWidget {
   State<PartDetailPage> createState() => _PartDetailPageState();
 }
 
-class _PartDetailPageState extends BlocPageState<PartDetailPage, PartDetailBloc> {
+class _PartDetailPageState extends State<PartDetailPage> {
+  late final PartDetailBloc bloc;
+
+  @override
+  initState() {
+    super.initState();
+    bloc = context.read<PartDetailBloc>();
+  }
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -40,17 +50,9 @@ class _PartDetailPageState extends BlocPageState<PartDetailPage, PartDetailBloc>
   TabBarView _buildBody() {
     return TabBarView(
       children: [
-        const PartListTab(),
-        _buildPartListTab(),
-        _buildPartListTab(),
-      ],
-    );
-  }
-
-  Widget _buildPartListTab() {
-    return Column(
-      children: [
-
+        const DrawTab(),
+        RealizationTab(partDetail: bloc.selectedPart),
+        const StatusTab(),
       ],
     );
   }

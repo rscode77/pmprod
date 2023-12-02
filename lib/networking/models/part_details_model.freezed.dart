@@ -14,7 +14,7 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-PartDetailsModel _$PartDetailsModelFromJson(Map<String, dynamic> json) {
+PartDetailModel _$PartDetailsModelFromJson(Map<String, dynamic> json) {
   return _PartDetailsModel.fromJson(json);
 }
 
@@ -47,15 +47,15 @@ mixin _$PartDetailsModel {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $PartDetailsModelCopyWith<PartDetailsModel> get copyWith =>
+  $PartDetailsModelCopyWith<PartDetailModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $PartDetailsModelCopyWith<$Res> {
   factory $PartDetailsModelCopyWith(
-          PartDetailsModel value, $Res Function(PartDetailsModel) then) =
-      _$PartDetailsModelCopyWithImpl<$Res, PartDetailsModel>;
+          PartDetailModel value, $Res Function(PartDetailModel) then) =
+      _$PartDetailsModelCopyWithImpl<$Res, PartDetailModel>;
   @useResult
   $Res call(
       {@JsonKey(name: 'ProductionOrder') String productionOrder,
@@ -73,7 +73,7 @@ abstract class $PartDetailsModelCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$PartDetailsModelCopyWithImpl<$Res, $Val extends PartDetailsModel>
+class _$PartDetailsModelCopyWithImpl<$Res, $Val extends PartDetailModel>
     implements $PartDetailsModelCopyWith<$Res> {
   _$PartDetailsModelCopyWithImpl(this._value, this._then);
 
@@ -375,7 +375,7 @@ class _$PartDetailsModelImpl implements _PartDetailsModel {
   }
 }
 
-abstract class _PartDetailsModel implements PartDetailsModel {
+abstract class _PartDetailsModel implements PartDetailModel {
   const factory _PartDetailsModel(
       {@JsonKey(name: 'ProductionOrder') required final String productionOrder,
       @JsonKey(name: 'PartName') required final String partName,

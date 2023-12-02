@@ -8,11 +8,11 @@ part 'part_details_event.dart';
 part 'part_details_state.dart';
 
 class PartDetailBloc extends Bloc<PartDetailsEvent, PartDetailsState> {
-  final PartDetailsModel selectedPart;
+  final PartDetailModel selectedPart;
 
   PartDetailBloc({required this.selectedPart}) : super(PartDetailsInitial()) {
     on<PartDetailsEvent>((event, emit) {
-      // TODO: implement event handler
+
     });
   }
 }

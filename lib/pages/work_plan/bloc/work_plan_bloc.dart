@@ -26,7 +26,7 @@ class WorkPlanBloc extends Bloc<WorkPlanEvent, WorkPlanState> {
 
     final List partDetailsModelList = jsonDecode(workPlanFile) as List;
 
-    var parts = partDetailsModelList.map((jsonItem) => PartDetailsModel.fromJson(jsonItem)).toList();
+    var parts = partDetailsModelList.map((jsonItem) => PartDetailModel.fromJson(jsonItem)).toList();
     return emit(WorkPlanLoaded(parts));
     emit(const WorkPlanFailed(message: 'Error'));
   }

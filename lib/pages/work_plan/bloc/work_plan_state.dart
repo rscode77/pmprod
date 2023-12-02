@@ -15,7 +15,7 @@ class WorkPlanLoading extends WorkPlanState {
 }
 
 class WorkPlanLoaded extends WorkPlanState {
-  final List<PartDetailsModel> workPlan;
+  final List<PartDetailModel> workPlan;
 
   const WorkPlanLoaded(this.workPlan);
   @override

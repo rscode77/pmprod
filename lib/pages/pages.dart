@@ -24,7 +24,7 @@ abstract class Pages {
 
   static Widget partDetail(dynamic arguments) {
     return BlocProvider<PartDetailBloc>(
-      create: (context) => PartDetailBloc(selectedPart: arguments as PartDetailsModel),
+      create: (context) => PartDetailBloc(selectedPart: arguments as PartDetailModel),
       child: const PartDetailPage(),
     );
   }

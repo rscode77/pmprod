@@ -15,6 +15,8 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends BlocPageState<LoginPage, LoginBloc> {
+  final TextEditingController _userIdController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -66,6 +68,7 @@ class _LoginPageState extends BlocPageState<LoginPage, LoginBloc> {
 
   Widget _buildLoginTextField() {
     return DataTextField(
+      controller: _userIdController,
       labelText: S.of(context).userId,
     );
   }

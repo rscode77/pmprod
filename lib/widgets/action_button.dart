@@ -24,13 +24,14 @@ class ActionButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       height: AppDimensions.height.actionButton,
+      width: double.infinity,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
           backgroundColor: fillColor,
           shadowColor: AppShadows.defaultShadow().color,
           elevation: 12.0,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(16.0),
+            borderRadius: BorderRadius.circular(AppDimensions.defaultRadius),
           ),
         ),
         onPressed: onPressed,
