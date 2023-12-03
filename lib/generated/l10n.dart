@@ -109,6 +109,156 @@ class S {
       args: [],
     );
   }
+
+  /// `Zapisz`
+  String get save {
+    return Intl.message(
+      'Zapisz',
+      name: 'save',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Anuluj`
+  String get cancel {
+    return Intl.message(
+      'Anuluj',
+      name: 'cancel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Wyloguj`
+  String get logout {
+    return Intl.message(
+      'Wyloguj',
+      name: 'logout',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Zaloguj`
+  String get login {
+    return Intl.message(
+      'Zaloguj',
+      name: 'login',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Aktualna ilość`
+  String get actualQuantity {
+    return Intl.message(
+      'Aktualna ilość',
+      name: 'actualQuantity',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Wprowadź aktualnie zrealizowaną ilość detali`
+  String get actualRealizedQuantity {
+    return Intl.message(
+      'Wprowadź aktualnie zrealizowaną ilość detali',
+      name: 'actualRealizedQuantity',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ilosć w zleceniu:`
+  String get orderQuantity {
+    return Intl.message(
+      'Ilosć w zleceniu:',
+      name: 'orderQuantity',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Materiał:`
+  String get material {
+    return Intl.message(
+      'Materiał:',
+      name: 'material',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Opis detalu:`
+  String get partDescription {
+    return Intl.message(
+      'Opis detalu:',
+      name: 'partDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Zgłoś brakujące detale`
+  String get reportMissingParts {
+    return Intl.message(
+      'Zgłoś brakujące detale',
+      name: 'reportMissingParts',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Potwierdź operację`
+  String get confirmOperation {
+    return Intl.message(
+      'Potwierdź operację',
+      name: 'confirmOperation',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Tak`
+  String get yes {
+    return Intl.message(
+      'Tak',
+      name: 'yes',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Nie`
+  String get no {
+    return Intl.message(
+      'Nie',
+      name: 'no',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Czy chcesz zaktualizować ilość zrealizowanych detali?`
+  String get confirmQuantity {
+    return Intl.message(
+      'Czy chcesz zaktualizować ilość zrealizowanych detali?',
+      name: 'confirmQuantity',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Wprowadź ilość brakująch detali`
+  String get enterNumberOfMissingParts {
+    return Intl.message(
+      'Wprowadź ilość brakująch detali',
+      name: 'enterNumberOfMissingParts',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

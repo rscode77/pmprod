@@ -22,13 +22,35 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "actualQuantity":
+            MessageLookupByLibrary.simpleMessage("Aktualna ilość"),
+        "actualRealizedQuantity": MessageLookupByLibrary.simpleMessage(
+            "Wprowadź aktualnie zrealizowaną ilość detali"),
         "appName": MessageLookupByLibrary.simpleMessage("PressMetal Produkcja"),
+        "cancel": MessageLookupByLibrary.simpleMessage("Anuluj"),
+        "confirmOperation":
+            MessageLookupByLibrary.simpleMessage("Potwierdź operację"),
+        "confirmQuantity": MessageLookupByLibrary.simpleMessage(
+            "Czy chcesz zaktualizować ilość zrealizowanych detali?"),
+        "enterNumberOfMissingParts": MessageLookupByLibrary.simpleMessage(
+            "Wprowadź ilość brakująch detali"),
+        "login": MessageLookupByLibrary.simpleMessage("Zaloguj"),
         "loginFailed": MessageLookupByLibrary.simpleMessage(
             "Nieprawidłowe dane logowania"),
+        "logout": MessageLookupByLibrary.simpleMessage("Wyloguj"),
+        "material": MessageLookupByLibrary.simpleMessage("Materiał:"),
+        "no": MessageLookupByLibrary.simpleMessage("Nie"),
+        "orderQuantity":
+            MessageLookupByLibrary.simpleMessage("Ilosć w zleceniu:"),
+        "partDescription": MessageLookupByLibrary.simpleMessage("Opis detalu:"),
         "realized": MessageLookupByLibrary.simpleMessage("Zrealizowane"),
+        "reportMissingParts":
+            MessageLookupByLibrary.simpleMessage("Zgłoś brakujące detale"),
+        "save": MessageLookupByLibrary.simpleMessage("Zapisz"),
         "search": MessageLookupByLibrary.simpleMessage("Szukaj"),
         "userId":
             MessageLookupByLibrary.simpleMessage("Wprwoadź id użytkownika"),
-        "workPlan": MessageLookupByLibrary.simpleMessage("Plan pracy")
+        "workPlan": MessageLookupByLibrary.simpleMessage("Plan pracy"),
+        "yes": MessageLookupByLibrary.simpleMessage("Tak")
       };
 }

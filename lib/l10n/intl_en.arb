@@ -4,5 +4,20 @@
   "loginFailed" : "Nieprawidłowe dane logowania",
   "realized" : "Zrealizowane",
   "search" : "Szukaj",
-  "workPlan" : "Plan pracy"
+  "workPlan" : "Plan pracy",
+  "save" : "Zapisz",
+  "cancel" : "Anuluj",
+  "logout" : "Wyloguj",
+  "login" : "Zaloguj",
+  "actualQuantity" : "Aktualna ilość",
+  "actualRealizedQuantity" : "Wprowadź aktualnie zrealizowaną ilość detali",
+  "orderQuantity" : "Ilosć w zleceniu:",
+  "material" : "Materiał:",
+  "partDescription" : "Opis detalu:",
+  "reportMissingParts" : "Zgłoś brakujące detale",
+  "confirmOperation" : "Potwierdź operację",
+  "yes" : "Tak",
+  "no" : "Nie",
+  "confirmQuantity" : "Czy chcesz zaktualizować ilość zrealizowanych detali?",
+  "enterNumberOfMissingParts" : "Wprowadź ilość brakująch detali"
 }

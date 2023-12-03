@@ -39,9 +39,9 @@ class _PartDetailPageState extends State<PartDetailPage> {
       title: Text(bloc.selectedPart.partName),
       bottom: const TabBar(
         tabs: [
-          Tab(icon: Icon(Icons.directions_car)),
-          Tab(icon: Icon(Icons.directions_transit)),
-          Tab(icon: Icon(Icons.directions_bike)),
+          Tab(icon: Icon(Icons.photo)),
+          Tab(icon: Icon(Icons.check_circle_rounded)),
+          Tab(icon: Icon(Icons.account_tree_rounded)),
         ],
       ),
     );

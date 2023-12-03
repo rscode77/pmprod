@@ -69,7 +69,7 @@ class _LoginPageState extends BlocPageState<LoginPage, LoginBloc> {
   Widget _buildLoginTextField() {
     return DataTextField(
       controller: _userIdController,
-      labelText: S.of(context).userId,
+      hintText: S.of(context).userId,
     );
   }
 

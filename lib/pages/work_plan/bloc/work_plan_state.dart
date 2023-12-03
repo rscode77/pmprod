@@ -5,8 +5,12 @@ abstract class WorkPlanState extends Equatable {
 }
 
 class WorkPlanInitial extends WorkPlanState {
+  final List<PartDetailModel> workPlan;
+
+  const WorkPlanInitial(this.workPlan);
+
   @override
-  List<Object> get props => [];
+  List<Object> get props => [workPlan];
 }
 
 class WorkPlanLoading extends WorkPlanState {

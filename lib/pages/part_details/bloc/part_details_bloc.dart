@@ -11,8 +11,16 @@ class PartDetailBloc extends Bloc<PartDetailsEvent, PartDetailsState> {
   final PartDetailModel selectedPart;
 
   PartDetailBloc({required this.selectedPart}) : super(PartDetailsInitial()) {
-    on<PartDetailsEvent>((event, emit) {
+    on<UpdateQuantityEvent>(_onUpdateQuantityEvent);
+    on<ReportMissingPartEvent>(_onReportMissingPartEvent);
+  }
 
-    });
+  void _onUpdateQuantityEvent(UpdateQuantityEvent event, Emitter<PartDetailsState> emit) {
+    print(event.quantity);
+  }
+
+  void _onReportMissingPartEvent(ReportMissingPartEvent event, Emitter<PartDetailsState> emit) {
+    print(event.partUniqueId);
+    print(event.quantity);
   }
 }

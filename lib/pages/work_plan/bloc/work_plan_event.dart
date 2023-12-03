@@ -21,3 +21,25 @@ class LoadWorkPlanEvent extends WorkPlanEvent {
   @override
   List<Object?> get props => [date];
 }
+
+class UpdateSelectedDateEvent extends WorkPlanEvent {
+  final DateTime date;
+
+  const UpdateSelectedDateEvent({
+    required this.date,
+  });
+
+  @override
+  List<Object?> get props => [date];
+}
+
+class SearchInWorkPlanEvent extends WorkPlanEvent {
+  final String query;
+
+  const SearchInWorkPlanEvent({
+    required this.query,
+  });
+
+  @override
+  List<Object?> get props => [query];
+}

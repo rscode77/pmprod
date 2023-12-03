@@ -4,14 +4,17 @@ import 'package:pmprod/generated/l10n.dart';
 import 'package:pmprod/networking/models/part_details_model.dart';
 import 'package:pmprod/styles/app_decoration.dart';
 import 'package:pmprod/styles/app_dimensions.dart';
+import 'package:pmprod/styles/app_text_styles.dart';
 
 class WorkPlanPartList extends StatefulWidget {
   final Function(PartDetailModel) onPartPressed;
+  final Function(String) onSearchChanged;
   final List<PartDetailModel> partTabList;
 
   const WorkPlanPartList({
     super.key,
     required this.onPartPressed,
+    required this.onSearchChanged,
     required this.partTabList,
   });
 
@@ -46,6 +49,7 @@ class _WorkPlanPartListState extends State<WorkPlanPartList> {
       ),
       margin: EdgeInsets.all(AppDimensions.margin.partDetailsListMargin),
       child: TextField(
+        onChanged: (value) => widget.onSearchChanged(value),
         decoration: InputDecoration(
           hintText: S.of(context).search,
           border: InputBorder.none,
@@ -64,11 +68,15 @@ class _WorkPlanPartListState extends State<WorkPlanPartList> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            _buildContractorName(part.contractor),
             _buildImageSection(),
             const Space.vertical(8.0),
             Row(
               children: [
-                _buildStatusIcon(),
+                _buildStatusIcon(
+                  quantity: part.quantity,
+                  realizedQuantity: part.realizedQuantity,
+                ),
                 _buildDetailsSection(
                   mainOrder: part.mainOrder,
                   productionOrder: part.productionOrder,
@@ -87,6 +95,20 @@ class _WorkPlanPartListState extends State<WorkPlanPartList> {
     );
   }
 
+  Widget _buildContractorName(String contractor) {
+    return Row(
+      children: [
+        Container(
+          padding: const EdgeInsets.only(bottom: 8.0),
+          child: Text(
+            contractor,
+            style: AppTextStyles.title(),
+          ),
+        ),
+      ],
+    );
+  }
+
   Widget _buildImageSection() {
     return SizedBox(
       height: AppDimensions.height.partDrawHeight,
@@ -95,17 +117,6 @@ class _WorkPlanPartListState extends State<WorkPlanPartList> {
         'https://cdn.cadcrowd.com/3d-models/f8/f3/f8f39fbc-f099-4f09-b95e-bd7b289b7897/gallery/8b778e33-56e5-460c-ae2f-42a63c4cfede/medium.jpg',
         fit: BoxFit.fitHeight,
       ),
-    );
-  }
-
-  Widget _buildStatusIcon() {
-    return Row(
-      children: [
-        Icon(
-          Icons.check_circle,
-          size: AppDimensions.height.iconSize,
-        ),
-      ],
     );
   }
 
@@ -123,9 +134,18 @@ class _WorkPlanPartListState extends State<WorkPlanPartList> {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(mainOrder),
-              Text(productionOrder),
-              Text(partName),
+              Text(
+                mainOrder,
+                style: AppTextStyles.info(),
+              ),
+              Text(
+                productionOrder,
+                style: AppTextStyles.info(),
+              ),
+              Text(
+                partName,
+                style: AppTextStyles.info(),
+              ),
             ],
           ),
         ],
@@ -139,8 +159,35 @@ class _WorkPlanPartListState extends State<WorkPlanPartList> {
   }) {
     return Row(
       children: [
-        Text('$realizedQuantity/$orderQuantity'),
+        Padding(
+          padding: const EdgeInsets.only(right: AppDimensions.defaultPadding),
+          child: Text(
+            '$realizedQuantity/$orderQuantity',
+            style: AppTextStyles.title(),
+          ),
+        ),
       ],
+    );
+  }
+
+  Widget _buildStatusIcon({
+    required quantity,
+    required realizedQuantity,
+  }) {
+    if (quantity >= realizedQuantity) {
+      return Icon(
+        Icons.circle_outlined,
+        size: AppDimensions.height.iconSize,
+      );
+    } else if (realizedQuantity > 0) {
+      return Icon(
+        Icons.build_circle_rounded,
+        size: AppDimensions.height.iconSize,
+      );
+    }
+    return Icon(
+      Icons.check_circle_rounded,
+      size: AppDimensions.height.iconSize,
     );
   }
 }

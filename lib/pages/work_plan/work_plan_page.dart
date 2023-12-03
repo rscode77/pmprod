@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:pmprod/extensions/datetime_extension.dart';
 import 'package:pmprod/generated/l10n.dart';
 import 'package:pmprod/pages/work_plan/bloc/work_plan_bloc.dart';
 import 'package:pmprod/pages/work_plan/work_plan_part_list.dart';
 import 'package:pmprod/routing/routing.dart';
-import 'package:pmprod/styles/app_colors.dart';
 
 class WorkPlanPage extends StatefulWidget {
   const WorkPlanPage({super.key});
@@ -14,6 +14,16 @@ class WorkPlanPage extends StatefulWidget {
 }
 
 class _WorkPlanPageState extends State<WorkPlanPage> {
+  late final WorkPlanBloc workPlanBloc;
+
+  String get selectedDate => workPlanBloc.selectedDate.value.getOnlyDate;
+
+  @override
+  void initState() {
+    workPlanBloc = context.read<WorkPlanBloc>();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,7 +44,7 @@ class _WorkPlanPageState extends State<WorkPlanPage> {
   AppBar _buildAppBar() {
     return AppBar(
       centerTitle: true,
-      title: Text(S.of(context).workPlan),
+      title: Text('${S.of(context).workPlan} $selectedDate'),
       leading: IconButton(
         icon: const Icon(Icons.settings),
         onPressed: () {},
@@ -58,12 +68,14 @@ class _WorkPlanPageState extends State<WorkPlanPage> {
   Widget _buildPartList(WorkPlanLoaded state) {
     return Center(
       child: WorkPlanPartList(
-        partTabList: state.workPlan,
-        onPartPressed: (part) => Navigator.of(context).pushNamed(
-          Routing.partDetail,
-          arguments: part,
-        ),
-      ),
+          partTabList: state.workPlan,
+          onPartPressed: (part) => Navigator.of(context).pushNamed(
+                Routing.partDetail,
+                arguments: part,
+              ),
+          onSearchChanged: (String query) {
+            workPlanBloc.add(SearchInWorkPlanEvent(query: query));
+          }),
     );
   }
 
