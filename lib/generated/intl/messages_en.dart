@@ -34,10 +34,13 @@ class MessageLookup extends MessageLookupByLibrary {
             "Czy chcesz zaktualizować ilość zrealizowanych detali?"),
         "enterNumberOfMissingParts": MessageLookupByLibrary.simpleMessage(
             "Wprowadź ilość brakująch detali"),
+        "loadPlan": MessageLookupByLibrary.simpleMessage("Wczytaj plan"),
         "login": MessageLookupByLibrary.simpleMessage("Zaloguj"),
         "loginFailed": MessageLookupByLibrary.simpleMessage(
             "Nieprawidłowe dane logowania"),
         "logout": MessageLookupByLibrary.simpleMessage("Wyloguj"),
+        "logoutUser": MessageLookupByLibrary.simpleMessage(
+            "Kliknij aby wylogować bieżącego użytkownika"),
         "material": MessageLookupByLibrary.simpleMessage("Materiał:"),
         "no": MessageLookupByLibrary.simpleMessage("Nie"),
         "orderQuantity":
@@ -48,8 +51,11 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Zgłoś brakujące detale"),
         "save": MessageLookupByLibrary.simpleMessage("Zapisz"),
         "search": MessageLookupByLibrary.simpleMessage("Szukaj"),
+        "selectDatePlan": MessageLookupByLibrary.simpleMessage(
+            "Wybierz z jakiego dnia chcesz wczytać plan"),
+        "settings": MessageLookupByLibrary.simpleMessage("Ustawienia"),
         "userId":
-            MessageLookupByLibrary.simpleMessage("Wprwoadź id użytkownika"),
+            MessageLookupByLibrary.simpleMessage("Wprowadź id użytkownika"),
         "workPlan": MessageLookupByLibrary.simpleMessage("Plan pracy"),
         "yes": MessageLookupByLibrary.simpleMessage("Tak")
       };

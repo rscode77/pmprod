@@ -60,10 +60,10 @@ class S {
     );
   }
 
-  /// `Wprwoadź id użytkownika`
+  /// `Wprowadź id użytkownika`
   String get userId {
     return Intl.message(
-      'Wprwoadź id użytkownika',
+      'Wprowadź id użytkownika',
       name: 'userId',
       desc: '',
       args: [],
@@ -255,6 +255,46 @@ class S {
     return Intl.message(
       'Wprowadź ilość brakująch detali',
       name: 'enterNumberOfMissingParts',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Wczytaj plan`
+  String get loadPlan {
+    return Intl.message(
+      'Wczytaj plan',
+      name: 'loadPlan',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ustawienia`
+  String get settings {
+    return Intl.message(
+      'Ustawienia',
+      name: 'settings',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Wybierz z jakiego dnia chcesz wczytać plan`
+  String get selectDatePlan {
+    return Intl.message(
+      'Wybierz z jakiego dnia chcesz wczytać plan',
+      name: 'selectDatePlan',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Kliknij aby wylogować bieżącego użytkownika`
+  String get logoutUser {
+    return Intl.message(
+      'Kliknij aby wylogować bieżącego użytkownika',
+      name: 'logoutUser',
       desc: '',
       args: [],
     );

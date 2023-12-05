@@ -19,17 +19,24 @@ class AppTextStyles {
     );
   }
 
+  static TextStyle appBar() {
+    return const TextStyle(
+      color: AppColors.blackPrimary,
+      fontSize: 16.0,
+    );
+  }
+
   static TextStyle info() {
     return const TextStyle(
       color: AppColors.blackPrimary,
-      fontSize: 14.0,
+      fontSize: 12.0,
     );
   }
 
   static TextStyle textField() {
     return const TextStyle(
       color: AppColors.black15,
-      fontSize: 18.0,
+      fontSize: 14.0,
       fontWeight: FontWeight.normal,
     );
   }
@@ -62,7 +69,7 @@ class AppTextStyles {
   static TextStyle title({
     Color color = AppColors.black,
     TextDecoration? decoration,
-    double fontSize = 18.0,
+    double fontSize = 16.0,
     FontStyle? fontStyle,
     FontWeight fontWeight = FontWeight.w500,
     double? height,

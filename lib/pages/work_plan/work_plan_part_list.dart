@@ -49,6 +49,7 @@ class _WorkPlanPartListState extends State<WorkPlanPartList> {
       ),
       margin: EdgeInsets.all(AppDimensions.margin.partDetailsListMargin),
       child: TextField(
+        style: AppTextStyles.textField(),
         onChanged: (value) => widget.onSearchChanged(value),
         decoration: InputDecoration(
           hintText: S.of(context).search,

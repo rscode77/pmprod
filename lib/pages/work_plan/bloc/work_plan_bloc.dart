@@ -5,6 +5,7 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
+import 'package:pmprod/extensions/list_product_details_extension.dart';
 import 'package:pmprod/extensions/string_extension.dart';
 import 'package:pmprod/networking/models/part_details_model.dart';
 
@@ -30,6 +31,8 @@ class WorkPlanBloc extends Bloc<WorkPlanEvent, WorkPlanState> {
   }
 
   Future<void> _onLoadWorkPlanEvent(LoadWorkPlanEvent event, Emitter<WorkPlanState> emit) async {
+    emit(WorkPlanLoading());
+    await Future.delayed(const Duration(seconds: 1));
     final String workPlanFile = await rootBundle.loadString('assets/mocks/mock.json');
 
     final List partDetailsModelList = jsonDecode(workPlanFile) as List;
@@ -43,26 +46,14 @@ class WorkPlanBloc extends Bloc<WorkPlanEvent, WorkPlanState> {
   }
 
   void _onUpdateSelectedDateEvent(UpdateSelectedDateEvent event, Emitter<WorkPlanState> emit) {
+    print(event.date);
     selectedDate.value = event.date;
+    add(LoadWorkPlanEvent(date: event.date));
   }
 
   void _onSearchInWorkPlanEvent(SearchInWorkPlanEvent event, Emitter<WorkPlanState> emit) {
-    final String query = event.query.toLowerCase();
-
     if (event.query.isBlank) return emit(WorkPlanLoaded(workPlan));
-    final List<PartDetailModel> filteredParts = workPlan.where((part) {
-      final String partName = part.partName.toLowerCase();
-      final String contractor = part.contractor.toLowerCase();
-      final String mainOrder = part.mainOrder.toLowerCase();
-      final String productionOrder = part.productionOrder.toLowerCase();
-      final String material = part.material.toLowerCase();
-
-      return partName.contains(query) ||
-          contractor.contains(query) ||
-          mainOrder.contains(query) ||
-          productionOrder.contains(query) ||
-          material.contains(query);
-    }).toList();
+    final List<PartDetailModel> filteredParts = workPlan.filterByQuery(query: event.query);
     emit(WorkPlanLoaded(filteredParts));
   }
 }

@@ -1,6 +1,6 @@
 {
   "appName": "PressMetal Produkcja",
-  "userId" : "Wprwoadź id użytkownika",
+  "userId" : "Wprowadź id użytkownika",
   "loginFailed" : "Nieprawidłowe dane logowania",
   "realized" : "Zrealizowane",
   "search" : "Szukaj",
@@ -19,5 +19,9 @@
   "yes" : "Tak",
   "no" : "Nie",
   "confirmQuantity" : "Czy chcesz zaktualizować ilość zrealizowanych detali?",
-  "enterNumberOfMissingParts" : "Wprowadź ilość brakująch detali"
+  "enterNumberOfMissingParts" : "Wprowadź ilość brakująch detali",
+  "loadPlan" : "Wczytaj plan",
+  "settings" : "Ustawienia",
+  "selectDatePlan" : "Wybierz z jakiego dnia chcesz wczytać plan",
+  "logoutUser" : "Kliknij aby wylogować bieżącego użytkownika"
 }

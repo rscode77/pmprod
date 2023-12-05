@@ -4,11 +4,15 @@ import 'package:pmprod/styles/app_text_styles.dart';
 
 class DataTextField extends StatefulWidget {
   final TextEditingController controller;
-  final String hintText;
+  final bool isReadOnly;
+  final Function()? onTap;
+  final String? hintText;
 
   const DataTextField({
     super.key,
     required this.controller,
+    this.isReadOnly = false,
+    this.onTap,
     required this.hintText,
   });
 
@@ -22,6 +26,8 @@ class _DataTextFieldState extends State<DataTextField> {
     return SizedBox(
       height: AppDimensions.height.textField,
       child: TextField(
+        onTap: widget.onTap,
+        readOnly: widget.isReadOnly,
         textAlignVertical: TextAlignVertical.center,
         textAlign: TextAlign.center,
         keyboardType: TextInputType.number,
@@ -29,6 +35,7 @@ class _DataTextFieldState extends State<DataTextField> {
         style: AppTextStyles.textField(),
         decoration: InputDecoration(
           hintText: widget.hintText,
+          hintStyle: AppTextStyles.textField(),
           contentPadding: EdgeInsets.zero,
           focusedBorder: const OutlineInputBorder(
             borderRadius: BorderRadius.all(
