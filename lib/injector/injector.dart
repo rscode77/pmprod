@@ -15,10 +15,9 @@ class Injector {
       baseUrl: Endpoints.baseUrl,
       connectTimeout: const Duration(seconds: 10),
       receiveTimeout: const Duration(seconds: 10),
+      contentType: Headers.formUrlEncodedContentType,
       headers: {
-        HttpHeaders.acceptHeader: "application/json",
-        HttpHeaders.contentTypeHeader: "application/json",
-      },
+        HttpHeaders.acceptHeader: 'application/json',},
     ),
   );
 

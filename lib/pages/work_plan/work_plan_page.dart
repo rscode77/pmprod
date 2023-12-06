@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pmprod/bloc/authentication_bloc.dart';
 import 'package:pmprod/extensions/datetime_extension.dart';
 import 'package:pmprod/extensions/sized_box_extension.dart';
+import 'package:pmprod/extensions/string_extension.dart';
 import 'package:pmprod/generated/l10n.dart';
 import 'package:pmprod/pages/work_plan/bloc/work_plan_bloc.dart';
 import 'package:pmprod/pages/work_plan/work_plan_part_list.dart';
@@ -23,7 +24,19 @@ class _WorkPlanPageState extends State<WorkPlanPage> {
   late final AuthenticationBloc _authenticationBloc;
   late final WorkPlanBloc _workPlanBloc;
 
-  String get _selectedDate => _workPlanBloc.selectedDate.value.getOnlyDate;
+  String? get _loggedInUsername {
+    if (_authenticationBloc.state is LoginSuccess) {
+      return (_authenticationBloc.state as LoginSuccess).username;
+    }
+    return null;
+  }
+
+  DateTime? get _selectedDate {
+    if (_workPlanBloc.state is WorkPlanLoaded) {
+      return (_workPlanBloc.state as WorkPlanLoaded).selectedDate;
+    }
+    return null;
+  }
 
   @override
   void initState() {
@@ -86,7 +99,7 @@ class _WorkPlanPageState extends State<WorkPlanPage> {
   }
 
   List<Widget> _buildBottomSheetItems() {
-    final TextEditingController dataController = TextEditingController(text: _selectedDate);
+    final TextEditingController dataController = TextEditingController(text: _selectedDate?.getOnlyDate);
     return [
       Text(
         S.of(context).settings,
@@ -106,6 +119,10 @@ class _WorkPlanPageState extends State<WorkPlanPage> {
       ),
       const Spacer(),
       Text(
+        _loggedInUsername.orEmpty(),
+        style: AppTextStyles.title(),
+      ),
+      Text(
         S.of(context).logoutUser,
         style: AppTextStyles.info(),
       ),
@@ -124,7 +141,7 @@ class _WorkPlanPageState extends State<WorkPlanPage> {
       firstDate: DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day - 1),
       lastDate: DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day + 14),
     );
-    if(selectedDate == null || _selectedDate == selectedDate.getOnlyDate) return;
+    if(selectedDate == null || _selectedDate == selectedDate) return;
     _updateSelectedDate(selectedDate);
   }
 
@@ -148,12 +165,7 @@ class _WorkPlanPageState extends State<WorkPlanPage> {
     return AppBar(
       centerTitle: true,
       titleTextStyle: AppTextStyles.appBar(),
-      title: ValueListenableBuilder<DateTime>(
-        valueListenable: _workPlanBloc.selectedDate,
-        builder: (_, selectedDate, __) {
-          return Text('${S.of(context).workPlan} ${selectedDate.getOnlyDate}');
-        },
-      ),
+      title: Text(S.of(context).workPlan),
       leading: IconButton(
         icon: const Icon(Icons.settings),
         onPressed: () async => await _buildBottomSheet(),
@@ -183,7 +195,12 @@ class _WorkPlanPageState extends State<WorkPlanPage> {
                 arguments: part,
               ),
           onSearchChanged: (String query) {
-            _workPlanBloc.add(SearchInWorkPlanEvent(query: query));
+            _workPlanBloc.add(
+              SearchInWorkPlanEvent(
+                query: query,
+                date: _selectedDate ?? DateTime.now(),
+              ),
+            );
           }),
     );
   }

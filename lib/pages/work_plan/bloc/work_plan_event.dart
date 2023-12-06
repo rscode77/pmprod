@@ -34,12 +34,17 @@ class UpdateSelectedDateEvent extends WorkPlanEvent {
 }
 
 class SearchInWorkPlanEvent extends WorkPlanEvent {
+  final DateTime date;
   final String query;
 
   const SearchInWorkPlanEvent({
+    required this.date,
     required this.query,
   });
 
   @override
-  List<Object?> get props => [query];
+  List<Object?> get props => [
+        date,
+        query,
+      ];
 }

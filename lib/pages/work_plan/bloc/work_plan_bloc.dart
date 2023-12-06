@@ -3,14 +3,12 @@ import 'dart:convert';
 
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:pmprod/extensions/list_product_details_extension.dart';
 import 'package:pmprod/extensions/string_extension.dart';
 import 'package:pmprod/networking/models/part_details_model.dart';
 
 part 'work_plan_event.dart';
-
 part 'work_plan_state.dart';
 
 class WorkPlanBloc extends Bloc<WorkPlanEvent, WorkPlanState> {
@@ -21,8 +19,6 @@ class WorkPlanBloc extends Bloc<WorkPlanEvent, WorkPlanState> {
     on<SearchInWorkPlanEvent>(_onSearchInWorkPlanEvent);
   }
 
-  ValueNotifier<DateTime> selectedDate = ValueNotifier<DateTime>(DateTime.now());
-
   List<PartDetailModel> workPlan = [];
 
   void _onWorkPlanInitialEvent(WorkPlanInitialEvent event, Emitter<WorkPlanState> emit) {
@@ -32,6 +28,7 @@ class WorkPlanBloc extends Bloc<WorkPlanEvent, WorkPlanState> {
 
   Future<void> _onLoadWorkPlanEvent(LoadWorkPlanEvent event, Emitter<WorkPlanState> emit) async {
     emit(WorkPlanLoading());
+
     await Future.delayed(const Duration(seconds: 1));
     final String workPlanFile = await rootBundle.loadString('assets/mocks/mock.json');
 
@@ -42,18 +39,21 @@ class WorkPlanBloc extends Bloc<WorkPlanEvent, WorkPlanState> {
 
     workPlan = parts;
 
-    return emit(WorkPlanLoaded(parts));
+    emit(WorkPlanLoaded(selectedDate: event.date, workPlan: workPlan));
   }
 
   void _onUpdateSelectedDateEvent(UpdateSelectedDateEvent event, Emitter<WorkPlanState> emit) {
-    print(event.date);
-    selectedDate.value = event.date;
     add(LoadWorkPlanEvent(date: event.date));
   }
 
   void _onSearchInWorkPlanEvent(SearchInWorkPlanEvent event, Emitter<WorkPlanState> emit) {
-    if (event.query.isBlank) return emit(WorkPlanLoaded(workPlan));
+    if (event.query.isBlank) return;
     final List<PartDetailModel> filteredParts = workPlan.filterByQuery(query: event.query);
-    emit(WorkPlanLoaded(filteredParts));
+    emit(
+      WorkPlanLoaded(
+        selectedDate: event.date,
+        workPlan: filteredParts,
+      ),
+    );
   }
 }

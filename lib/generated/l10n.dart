@@ -290,10 +290,10 @@ class S {
     );
   }
 
-  /// `Kliknij aby wylogować bieżącego użytkownika`
+  /// `Kliknij aby się wylogować`
   String get logoutUser {
     return Intl.message(
-      'Kliknij aby wylogować bieżącego użytkownika',
+      'Kliknij aby się wylogować',
       name: 'logoutUser',
       desc: '',
       args: [],

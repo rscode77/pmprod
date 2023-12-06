@@ -15,10 +15,10 @@ class LoginLoading extends AuthenticationState {
 }
 
 class LoginSuccess extends AuthenticationState {
+  String get username => user.userName.orEmpty();
+
   final AuthenticationModel user;
-
   const LoginSuccess({required this.user});
-
   @override
   List<Object> get props => [user];
 }

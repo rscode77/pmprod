@@ -20,10 +20,18 @@ class WorkPlanLoading extends WorkPlanState {
 
 class WorkPlanLoaded extends WorkPlanState {
   final List<PartDetailModel> workPlan;
+  final DateTime selectedDate;
 
-  const WorkPlanLoaded(this.workPlan);
+  const WorkPlanLoaded({
+    required this.selectedDate,
+    required this.workPlan,
+  });
+
   @override
-  List<Object> get props => [workPlan];
+  List<Object> get props => [
+        selectedDate,
+        workPlan,
+      ];
 }
 
 class WorkPlanFailed extends WorkPlanState {

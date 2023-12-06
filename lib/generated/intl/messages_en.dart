@@ -39,8 +39,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "loginFailed": MessageLookupByLibrary.simpleMessage(
             "Nieprawidłowe dane logowania"),
         "logout": MessageLookupByLibrary.simpleMessage("Wyloguj"),
-        "logoutUser": MessageLookupByLibrary.simpleMessage(
-            "Kliknij aby wylogować bieżącego użytkownika"),
+        "logoutUser":
+            MessageLookupByLibrary.simpleMessage("Kliknij aby się wylogować"),
         "material": MessageLookupByLibrary.simpleMessage("Materiał:"),
         "no": MessageLookupByLibrary.simpleMessage("Nie"),
         "orderQuantity":

@@ -1,5 +1,5 @@
 class CommonStorageKeys {
   static const String userId = 'userId';
-  static const String userName = 'userName';
+  static const String username = 'username';
   const CommonStorageKeys._();
 }
