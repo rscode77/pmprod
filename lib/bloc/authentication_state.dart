@@ -15,7 +15,7 @@ class LoginLoading extends AuthenticationState {
 }
 
 class LoginSuccess extends AuthenticationState {
-  final LoginModel user;
+  final AuthenticationModel user;
 
   const LoginSuccess({required this.user});
 

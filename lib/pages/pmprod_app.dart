@@ -21,7 +21,7 @@ class _PmProdAppState extends State<PmProdApp> {
   void initState() {
     _loginBloc = AuthenticationBloc(
       commonStorage: GetIt.instance.get<CommonStorage>(),
-      userRepository: GetIt.instance.get<UserRepository>(),
+      userRepository: GetIt.instance.get<AuthenticationRepository>(),
     )..add(const LoginInitialEvent());
     super.initState();
   }

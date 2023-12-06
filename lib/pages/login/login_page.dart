@@ -89,7 +89,7 @@ class _LoginPageState extends BlocPageState<LoginPage, AuthenticationBloc> {
     return ActionButton(
       title: S.of(context).login,
       onPressed: () => bloc.add(
-        const LoginUserEvent(userId: '1'),
+         LoginUserEvent(userId: _userIdController.value.text),
       ),
     );
   }

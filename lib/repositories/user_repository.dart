@@ -1,6 +1,7 @@
-import 'package:pmprod/networking/models/login_model.dart';
-import 'package:pmprod/networking/requests/login_request.dart';
+import 'package:dio/dio.dart';
+import 'package:pmprod/networking/models/authentication_model.dart';
+import 'package:pmprod/networking/requests/authentication_request.dart';
 
-abstract class UserRepository {
-  Future<LoginModel> loginUser(LoginRequest request);
+abstract class AuthenticationRepository {
+  Future<Response<AuthenticationModel>> loginUser(AuthenticationRequest request);
 }

@@ -14,12 +14,12 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-PartDetailModel _$PartDetailsModelFromJson(Map<String, dynamic> json) {
-  return _PartDetailsModel.fromJson(json);
+PartDetailModel _$PartDetailModelFromJson(Map<String, dynamic> json) {
+  return _PartDetailModel.fromJson(json);
 }
 
 /// @nodoc
-mixin _$PartDetailsModel {
+mixin _$PartDetailModel {
   @JsonKey(name: 'ProductionOrder')
   String get productionOrder => throw _privateConstructorUsedError;
   @JsonKey(name: 'PartName')
@@ -47,15 +47,15 @@ mixin _$PartDetailsModel {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $PartDetailsModelCopyWith<PartDetailModel> get copyWith =>
+  $PartDetailModelCopyWith<PartDetailModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $PartDetailsModelCopyWith<$Res> {
-  factory $PartDetailsModelCopyWith(
+abstract class $PartDetailModelCopyWith<$Res> {
+  factory $PartDetailModelCopyWith(
           PartDetailModel value, $Res Function(PartDetailModel) then) =
-      _$PartDetailsModelCopyWithImpl<$Res, PartDetailModel>;
+      _$PartDetailModelCopyWithImpl<$Res, PartDetailModel>;
   @useResult
   $Res call(
       {@JsonKey(name: 'ProductionOrder') String productionOrder,
@@ -73,9 +73,9 @@ abstract class $PartDetailsModelCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$PartDetailsModelCopyWithImpl<$Res, $Val extends PartDetailModel>
-    implements $PartDetailsModelCopyWith<$Res> {
-  _$PartDetailsModelCopyWithImpl(this._value, this._then);
+class _$PartDetailModelCopyWithImpl<$Res, $Val extends PartDetailModel>
+    implements $PartDetailModelCopyWith<$Res> {
+  _$PartDetailModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -152,11 +152,11 @@ class _$PartDetailsModelCopyWithImpl<$Res, $Val extends PartDetailModel>
 }
 
 /// @nodoc
-abstract class _$$PartDetailsModelImplCopyWith<$Res>
-    implements $PartDetailsModelCopyWith<$Res> {
-  factory _$$PartDetailsModelImplCopyWith(_$PartDetailsModelImpl value,
-          $Res Function(_$PartDetailsModelImpl) then) =
-      __$$PartDetailsModelImplCopyWithImpl<$Res>;
+abstract class _$$PartDetailModelImplCopyWith<$Res>
+    implements $PartDetailModelCopyWith<$Res> {
+  factory _$$PartDetailModelImplCopyWith(_$PartDetailModelImpl value,
+          $Res Function(_$PartDetailModelImpl) then) =
+      __$$PartDetailModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -175,11 +175,11 @@ abstract class _$$PartDetailsModelImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$PartDetailsModelImplCopyWithImpl<$Res>
-    extends _$PartDetailsModelCopyWithImpl<$Res, _$PartDetailsModelImpl>
-    implements _$$PartDetailsModelImplCopyWith<$Res> {
-  __$$PartDetailsModelImplCopyWithImpl(_$PartDetailsModelImpl _value,
-      $Res Function(_$PartDetailsModelImpl) _then)
+class __$$PartDetailModelImplCopyWithImpl<$Res>
+    extends _$PartDetailModelCopyWithImpl<$Res, _$PartDetailModelImpl>
+    implements _$$PartDetailModelImplCopyWith<$Res> {
+  __$$PartDetailModelImplCopyWithImpl(
+      _$PartDetailModelImpl _value, $Res Function(_$PartDetailModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -198,7 +198,7 @@ class __$$PartDetailsModelImplCopyWithImpl<$Res>
     Object? partUniqueId = null,
     Object? magazine = null,
   }) {
-    return _then(_$PartDetailsModelImpl(
+    return _then(_$PartDetailModelImpl(
       productionOrder: null == productionOrder
           ? _value.productionOrder
           : productionOrder // ignore: cast_nullable_to_non_nullable
@@ -253,8 +253,8 @@ class __$$PartDetailsModelImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$PartDetailsModelImpl implements _PartDetailsModel {
-  const _$PartDetailsModelImpl(
+class _$PartDetailModelImpl implements _PartDetailModel {
+  const _$PartDetailModelImpl(
       {@JsonKey(name: 'ProductionOrder') required this.productionOrder,
       @JsonKey(name: 'PartName') required this.partName,
       @JsonKey(name: 'Quantity') required this.quantity,
@@ -268,8 +268,8 @@ class _$PartDetailsModelImpl implements _PartDetailsModel {
       @JsonKey(name: 'PartUniqueId') required this.partUniqueId,
       @JsonKey(name: 'Magazine') required this.magazine});
 
-  factory _$PartDetailsModelImpl.fromJson(Map<String, dynamic> json) =>
-      _$$PartDetailsModelImplFromJson(json);
+  factory _$PartDetailModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$PartDetailModelImplFromJson(json);
 
   @override
   @JsonKey(name: 'ProductionOrder')
@@ -310,14 +310,14 @@ class _$PartDetailsModelImpl implements _PartDetailsModel {
 
   @override
   String toString() {
-    return 'PartDetailsModel(productionOrder: $productionOrder, partName: $partName, quantity: $quantity, contractor: $contractor, mainOrder: $mainOrder, partSymbol: $partSymbol, draw: $draw, material: $material, deadline: $deadline, realizedQuantity: $realizedQuantity, partUniqueId: $partUniqueId, magazine: $magazine)';
+    return 'PartDetailModel(productionOrder: $productionOrder, partName: $partName, quantity: $quantity, contractor: $contractor, mainOrder: $mainOrder, partSymbol: $partSymbol, draw: $draw, material: $material, deadline: $deadline, realizedQuantity: $realizedQuantity, partUniqueId: $partUniqueId, magazine: $magazine)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$PartDetailsModelImpl &&
+            other is _$PartDetailModelImpl &&
             (identical(other.productionOrder, productionOrder) ||
                 other.productionOrder == productionOrder) &&
             (identical(other.partName, partName) ||
@@ -363,20 +363,20 @@ class _$PartDetailsModelImpl implements _PartDetailsModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$PartDetailsModelImplCopyWith<_$PartDetailsModelImpl> get copyWith =>
-      __$$PartDetailsModelImplCopyWithImpl<_$PartDetailsModelImpl>(
+  _$$PartDetailModelImplCopyWith<_$PartDetailModelImpl> get copyWith =>
+      __$$PartDetailModelImplCopyWithImpl<_$PartDetailModelImpl>(
           this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$PartDetailsModelImplToJson(
+    return _$$PartDetailModelImplToJson(
       this,
     );
   }
 }
 
-abstract class _PartDetailsModel implements PartDetailModel {
-  const factory _PartDetailsModel(
+abstract class _PartDetailModel implements PartDetailModel {
+  const factory _PartDetailModel(
       {@JsonKey(name: 'ProductionOrder') required final String productionOrder,
       @JsonKey(name: 'PartName') required final String partName,
       @JsonKey(name: 'Quantity') required final double quantity,
@@ -389,10 +389,10 @@ abstract class _PartDetailsModel implements PartDetailModel {
       @JsonKey(name: 'RealizedQuantity') required final double realizedQuantity,
       @JsonKey(name: 'PartUniqueId') required final int partUniqueId,
       @JsonKey(name: 'Magazine')
-      required final Magazine magazine}) = _$PartDetailsModelImpl;
+      required final Magazine magazine}) = _$PartDetailModelImpl;
 
-  factory _PartDetailsModel.fromJson(Map<String, dynamic> json) =
-      _$PartDetailsModelImpl.fromJson;
+  factory _PartDetailModel.fromJson(Map<String, dynamic> json) =
+      _$PartDetailModelImpl.fromJson;
 
   @override
   @JsonKey(name: 'ProductionOrder')
@@ -432,6 +432,6 @@ abstract class _PartDetailsModel implements PartDetailModel {
   Magazine get magazine;
   @override
   @JsonKey(ignore: true)
-  _$$PartDetailsModelImplCopyWith<_$PartDetailsModelImpl> get copyWith =>
+  _$$PartDetailModelImplCopyWith<_$PartDetailModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

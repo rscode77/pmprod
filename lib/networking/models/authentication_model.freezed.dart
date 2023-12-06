@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'login_model.dart';
+part of 'authentication_model.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,34 +14,38 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-LoginModel _$LoginModelFromJson(Map<String, dynamic> json) {
-  return _LoginModel.fromJson(json);
+AuthenticationModel _$AuthenticationModelFromJson(Map<String, dynamic> json) {
+  return _AuthenticationModel.fromJson(json);
 }
 
 /// @nodoc
-mixin _$LoginModel {
-  String? get id => throw _privateConstructorUsedError;
+mixin _$AuthenticationModel {
+  @JsonKey(name: 'Id')
+  int? get id => throw _privateConstructorUsedError;
+  @JsonKey(name: 'Username')
   String? get userName => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $LoginModelCopyWith<LoginModel> get copyWith =>
+  $AuthenticationModelCopyWith<AuthenticationModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $LoginModelCopyWith<$Res> {
-  factory $LoginModelCopyWith(
-          LoginModel value, $Res Function(LoginModel) then) =
-      _$LoginModelCopyWithImpl<$Res, LoginModel>;
+abstract class $AuthenticationModelCopyWith<$Res> {
+  factory $AuthenticationModelCopyWith(
+          AuthenticationModel value, $Res Function(AuthenticationModel) then) =
+      _$AuthenticationModelCopyWithImpl<$Res, AuthenticationModel>;
   @useResult
-  $Res call({String? id, String? userName});
+  $Res call(
+      {@JsonKey(name: 'Id') int? id,
+      @JsonKey(name: 'Username') String? userName});
 }
 
 /// @nodoc
-class _$LoginModelCopyWithImpl<$Res, $Val extends LoginModel>
-    implements $LoginModelCopyWith<$Res> {
-  _$LoginModelCopyWithImpl(this._value, this._then);
+class _$AuthenticationModelCopyWithImpl<$Res, $Val extends AuthenticationModel>
+    implements $AuthenticationModelCopyWith<$Res> {
+  _$AuthenticationModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -58,7 +62,7 @@ class _$LoginModelCopyWithImpl<$Res, $Val extends LoginModel>
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as int?,
       userName: freezed == userName
           ? _value.userName
           : userName // ignore: cast_nullable_to_non_nullable
@@ -68,22 +72,24 @@ class _$LoginModelCopyWithImpl<$Res, $Val extends LoginModel>
 }
 
 /// @nodoc
-abstract class _$$LoginModelImplCopyWith<$Res>
-    implements $LoginModelCopyWith<$Res> {
-  factory _$$LoginModelImplCopyWith(
-          _$LoginModelImpl value, $Res Function(_$LoginModelImpl) then) =
-      __$$LoginModelImplCopyWithImpl<$Res>;
+abstract class _$$AuthenticationModelImplCopyWith<$Res>
+    implements $AuthenticationModelCopyWith<$Res> {
+  factory _$$AuthenticationModelImplCopyWith(_$AuthenticationModelImpl value,
+          $Res Function(_$AuthenticationModelImpl) then) =
+      __$$AuthenticationModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? id, String? userName});
+  $Res call(
+      {@JsonKey(name: 'Id') int? id,
+      @JsonKey(name: 'Username') String? userName});
 }
 
 /// @nodoc
-class __$$LoginModelImplCopyWithImpl<$Res>
-    extends _$LoginModelCopyWithImpl<$Res, _$LoginModelImpl>
-    implements _$$LoginModelImplCopyWith<$Res> {
-  __$$LoginModelImplCopyWithImpl(
-      _$LoginModelImpl _value, $Res Function(_$LoginModelImpl) _then)
+class __$$AuthenticationModelImplCopyWithImpl<$Res>
+    extends _$AuthenticationModelCopyWithImpl<$Res, _$AuthenticationModelImpl>
+    implements _$$AuthenticationModelImplCopyWith<$Res> {
+  __$$AuthenticationModelImplCopyWithImpl(_$AuthenticationModelImpl _value,
+      $Res Function(_$AuthenticationModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -92,11 +98,11 @@ class __$$LoginModelImplCopyWithImpl<$Res>
     Object? id = freezed,
     Object? userName = freezed,
   }) {
-    return _then(_$LoginModelImpl(
+    return _then(_$AuthenticationModelImpl(
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as int?,
       userName: freezed == userName
           ? _value.userName
           : userName // ignore: cast_nullable_to_non_nullable
@@ -107,27 +113,31 @@ class __$$LoginModelImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$LoginModelImpl implements _LoginModel {
-  const _$LoginModelImpl({required this.id, required this.userName});
+class _$AuthenticationModelImpl implements _AuthenticationModel {
+  const _$AuthenticationModelImpl(
+      {@JsonKey(name: 'Id') required this.id,
+      @JsonKey(name: 'Username') required this.userName});
 
-  factory _$LoginModelImpl.fromJson(Map<String, dynamic> json) =>
-      _$$LoginModelImplFromJson(json);
+  factory _$AuthenticationModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$AuthenticationModelImplFromJson(json);
 
   @override
-  final String? id;
+  @JsonKey(name: 'Id')
+  final int? id;
   @override
+  @JsonKey(name: 'Username')
   final String? userName;
 
   @override
   String toString() {
-    return 'LoginModel(id: $id, userName: $userName)';
+    return 'AuthenticationModel(id: $id, userName: $userName)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$LoginModelImpl &&
+            other is _$AuthenticationModelImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.userName, userName) ||
                 other.userName == userName));
@@ -140,31 +150,35 @@ class _$LoginModelImpl implements _LoginModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$LoginModelImplCopyWith<_$LoginModelImpl> get copyWith =>
-      __$$LoginModelImplCopyWithImpl<_$LoginModelImpl>(this, _$identity);
+  _$$AuthenticationModelImplCopyWith<_$AuthenticationModelImpl> get copyWith =>
+      __$$AuthenticationModelImplCopyWithImpl<_$AuthenticationModelImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$LoginModelImplToJson(
+    return _$$AuthenticationModelImplToJson(
       this,
     );
   }
 }
 
-abstract class _LoginModel implements LoginModel {
-  const factory _LoginModel(
-      {required final String? id,
-      required final String? userName}) = _$LoginModelImpl;
+abstract class _AuthenticationModel implements AuthenticationModel {
+  const factory _AuthenticationModel(
+          {@JsonKey(name: 'Id') required final int? id,
+          @JsonKey(name: 'Username') required final String? userName}) =
+      _$AuthenticationModelImpl;
 
-  factory _LoginModel.fromJson(Map<String, dynamic> json) =
-      _$LoginModelImpl.fromJson;
+  factory _AuthenticationModel.fromJson(Map<String, dynamic> json) =
+      _$AuthenticationModelImpl.fromJson;
 
   @override
-  String? get id;
+  @JsonKey(name: 'Id')
+  int? get id;
   @override
+  @JsonKey(name: 'Username')
   String? get userName;
   @override
   @JsonKey(ignore: true)
-  _$$LoginModelImplCopyWith<_$LoginModelImpl> get copyWith =>
+  _$$AuthenticationModelImplCopyWith<_$AuthenticationModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

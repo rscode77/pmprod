@@ -6,9 +6,9 @@ part of 'part_details_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$PartDetailsModelImpl _$$PartDetailsModelImplFromJson(
+_$PartDetailModelImpl _$$PartDetailModelImplFromJson(
         Map<String, dynamic> json) =>
-    _$PartDetailsModelImpl(
+    _$PartDetailModelImpl(
       productionOrder: json['ProductionOrder'] as String,
       partName: json['PartName'] as String,
       quantity: (json['Quantity'] as num).toDouble(),
@@ -23,8 +23,8 @@ _$PartDetailsModelImpl _$$PartDetailsModelImplFromJson(
       magazine: $enumDecode(_$MagazineEnumMap, json['Magazine']),
     );
 
-Map<String, dynamic> _$$PartDetailsModelImplToJson(
-        _$PartDetailsModelImpl instance) =>
+Map<String, dynamic> _$$PartDetailModelImplToJson(
+        _$PartDetailModelImpl instance) =>
     <String, dynamic>{
       'ProductionOrder': instance.productionOrder,
       'PartName': instance.partName,

@@ -4,7 +4,7 @@ part 'part_details_model.freezed.dart';
 part 'part_details_model.g.dart';
 
 @freezed
-class PartDetailModel with _$PartDetailsModel {
+class PartDetailModel with _$PartDetailModel {
   const factory PartDetailModel({
     @JsonKey(name: 'ProductionOrder')
     required String productionOrder,
@@ -30,9 +30,9 @@ class PartDetailModel with _$PartDetailsModel {
     required int partUniqueId,
     @JsonKey(name: 'Magazine')
     required Magazine magazine,
-  }) = _PartDetailsModel;
+  }) = _PartDetailModel;
 
-  factory PartDetailModel.fromJson(Map<String, dynamic> json) => _$PartDetailsModelFromJson(json);
+  factory PartDetailModel.fromJson(Map<String, dynamic> json) => _$PartDetailModelFromJson(json);
 }
 
 enum Magazine {

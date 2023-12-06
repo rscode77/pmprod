@@ -1,11 +1,13 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:dio/dio.dart';
 import 'package:equatable/equatable.dart';
+import 'package:pmprod/extensions/int_extension.dart';
 import 'package:pmprod/extensions/string_extension.dart';
 import 'package:pmprod/generated/l10n.dart';
-import 'package:pmprod/networking/models/login_model.dart';
-import 'package:pmprod/networking/requests/login_request.dart';
+import 'package:pmprod/networking/models/authentication_model.dart';
+import 'package:pmprod/networking/requests/authentication_request.dart';
 import 'package:pmprod/repositories/user_repository.dart';
 import 'package:pmprod/storages/common_storage.dart';
 import 'package:pmprod/storages/common_storage_keys.dart';
@@ -15,7 +17,7 @@ part 'authentication_state.dart';
 
 class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState> {
   final CommonStorage commonStorage;
-  final UserRepository userRepository;
+  final AuthenticationRepository userRepository;
 
   Future<bool> get _isUserLoggedIn async => await commonStorage.getString(CommonStorageKeys.userId) != null;
 
@@ -37,8 +39,8 @@ class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState> 
     if (await _isUserLoggedIn) {
       return emit(
         LoginSuccess(
-          user: LoginModel(
-            id: await commonStorage.getString(CommonStorageKeys.userId),
+          user: AuthenticationModel(
+            id: await commonStorage.getInt(CommonStorageKeys.userId),
             userName: await commonStorage.getString(CommonStorageKeys.userName),
           ),
         ),
@@ -49,21 +51,24 @@ class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState> 
   }
 
   Future<void> _onLoginUserEvent(LoginUserEvent event, Emitter<AuthenticationState> emit) async {
-    LoginModel loginModel = await userRepository.loginUser(
-      LoginRequest(userId: event.userId),
+    Response<AuthenticationModel> loginModel = await userRepository.loginUser(
+      AuthenticationRequest(userId: event.userId),
     );
 
-    if (loginModel.id == null) return emit(LoginFailed(message: S.current.loginFailed));
+    int? id = loginModel.data?.id;
+    String? userName = loginModel.data?.userName;
 
-    commonStorage.putString(
+    if (id == null || userName == null) return emit(LoginFailed(message: S.current.loginFailed));
+
+    commonStorage.putInt(
       CommonStorageKeys.userId,
-      loginModel.id.orEmpty(),
+      id.orZero(),
     );
     commonStorage.putString(
       CommonStorageKeys.userName,
-      loginModel.userName.orEmpty(),
+      userName.orEmpty(),
     );
-    emit(LoginSuccess(user: loginModel));
+    emit(LoginSuccess(user: loginModel.data!));
   }
 
   Future<void> _onLogoutUserEvent(LogoutUserEvent event, Emitter<AuthenticationState> emit) async {
