@@ -11,8 +11,9 @@ class AppDimensions {
 
 class _Height {
   final double actionButton = 46.0;
-  final double textField = 54.0;
+  final double bottomSheetHeight = 350.0;
   final double iconSize = 40.0;
+  final double textField = 54.0;
   final double partDrawHeight = 240.0;
 }
 

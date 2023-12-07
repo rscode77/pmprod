@@ -34,6 +34,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Czy chcesz zaktualizować ilość zrealizowanych detali?"),
         "enterNumberOfMissingParts": MessageLookupByLibrary.simpleMessage(
             "Wprowadź ilość brakująch detali"),
+        "loadOrder": MessageLookupByLibrary.simpleMessage("Wczytaj zlecenie"),
         "loadPlan": MessageLookupByLibrary.simpleMessage("Wczytaj plan"),
         "login": MessageLookupByLibrary.simpleMessage("Zaloguj"),
         "loginFailed": MessageLookupByLibrary.simpleMessage(

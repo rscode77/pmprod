@@ -299,6 +299,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Wczytaj zlecenie`
+  String get loadOrder {
+    return Intl.message(
+      'Wczytaj zlecenie',
+      name: 'loadOrder',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:pmprod/networking/models/part_details_model.dart';
 
 extension ListProductDetailsExtension on List<PartDetailModel> {

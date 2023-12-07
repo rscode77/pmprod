@@ -23,5 +23,6 @@
   "loadPlan" : "Wczytaj plan",
   "settings" : "Ustawienia",
   "selectDatePlan" : "Wybierz z jakiego dnia chcesz wczytać plan",
-  "logoutUser" : "Kliknij aby się wylogować"
+  "logoutUser" : "Kliknij aby się wylogować",
+  "loadOrder" : "Wczytaj zlecenie"
 }

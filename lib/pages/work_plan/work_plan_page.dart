@@ -2,16 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pmprod/bloc/authentication_bloc.dart';
 import 'package:pmprod/extensions/datetime_extension.dart';
-import 'package:pmprod/extensions/sized_box_extension.dart';
 import 'package:pmprod/extensions/string_extension.dart';
 import 'package:pmprod/generated/l10n.dart';
 import 'package:pmprod/pages/work_plan/bloc/work_plan_bloc.dart';
+import 'package:pmprod/pages/work_plan/work_plan_bottomsheet.dart';
 import 'package:pmprod/pages/work_plan/work_plan_part_list.dart';
 import 'package:pmprod/routing/routing.dart';
 import 'package:pmprod/styles/app_dimensions.dart';
 import 'package:pmprod/styles/app_text_styles.dart';
-import 'package:pmprod/widgets/action_button.dart';
-import 'package:pmprod/widgets/data_text_field.dart';
 
 class WorkPlanPage extends StatefulWidget {
   const WorkPlanPage({super.key});
@@ -87,51 +85,22 @@ class _WorkPlanPageState extends State<WorkPlanPage> {
       builder: (context) {
         return Container(
           padding: const EdgeInsets.all(AppDimensions.defaultPadding),
-          height: 240,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisSize: MainAxisSize.min,
-            children: _buildBottomSheetItems(),
-          ),
+          height: AppDimensions.height.bottomSheetHeight,
+          child: _buildBottomSheetItems(),
         );
       },
     );
   }
 
-  List<Widget> _buildBottomSheetItems() {
+  Widget _buildBottomSheetItems() {
     final TextEditingController dataController = TextEditingController(text: _selectedDate?.getOnlyDate);
-    return [
-      Text(
-        S.of(context).settings,
-        style: AppTextStyles.title(),
-      ),
-      const Space.vertical(4.0),
-      Text(
-        S.of(context).selectDatePlan,
-        style: AppTextStyles.info(),
-      ),
-      const Space.vertical(6.0),
-      DataTextField(
-        controller: dataController,
-        isReadOnly: true,
-        hintText: null,
-        onTap: () async => await _showDatePicker(),
-      ),
-      const Spacer(),
-      Text(
-        _loggedInUsername.orEmpty(),
-        style: AppTextStyles.title(),
-      ),
-      Text(
-        S.of(context).logoutUser,
-        style: AppTextStyles.info(),
-      ),
-      const Space.vertical(6.0),
-      ActionButton(
-        title: S.of(context).logout,
-        onPressed: () => _logoutUser(),
-      ),
-    ];
+    return WorkPlanBottomSheet(
+      username: _loggedInUsername.orEmpty(),
+      onLoadOrder: _onLoadOrder,
+      onLogout: _logoutUser,
+      onShowDatePicker: _showDatePicker,
+      dataController: dataController,
+    );
   }
 
   Future<void> _showDatePicker() async {
@@ -141,7 +110,7 @@ class _WorkPlanPageState extends State<WorkPlanPage> {
       firstDate: DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day - 1),
       lastDate: DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day + 14),
     );
-    if(selectedDate == null || _selectedDate == selectedDate) return;
+    if (selectedDate == null || _selectedDate == selectedDate) return;
     _updateSelectedDate(selectedDate);
   }
 
@@ -149,6 +118,8 @@ class _WorkPlanPageState extends State<WorkPlanPage> {
     _workPlanBloc.add(UpdateSelectedDateEvent(date: selectedDate));
     Navigator.pop(context);
   }
+
+  void _onLoadOrder() {}
 
   void _logoutUser() {
     _authenticationBloc.add(
