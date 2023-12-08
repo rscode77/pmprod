@@ -10,6 +10,7 @@ import 'package:pmprod/pages/work_plan/work_plan_part_list.dart';
 import 'package:pmprod/routing/routing.dart';
 import 'package:pmprod/styles/app_dimensions.dart';
 import 'package:pmprod/styles/app_text_styles.dart';
+import 'package:pmprod/widgets/load_order_dialog.dart';
 
 class WorkPlanPage extends StatefulWidget {
   const WorkPlanPage({super.key});
@@ -119,7 +120,27 @@ class _WorkPlanPageState extends State<WorkPlanPage> {
     Navigator.pop(context);
   }
 
-  void _onLoadOrder() {}
+  void _onLoadOrder() {
+    String? order;
+    showDialog(
+      context: context,
+      builder: (context) {
+        return LoadOrderDialog(
+          order: (orderValue) => order = orderValue,
+        );
+      },
+    ).then(
+      (value) {
+        if (value == null) return;
+        _workPlanBloc.add(
+          LoadOrderEvent(
+            order: order.orEmpty(),
+          ),
+        );
+        Navigator.pop(context);
+      },
+    );
+  }
 
   void _logoutUser() {
     _authenticationBloc.add(

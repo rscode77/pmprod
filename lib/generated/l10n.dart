@@ -309,6 +309,56 @@ class S {
       args: [],
     );
   }
+
+  /// `Wybierz aby wczytać pozycje w zleceniu`
+  String get selectOrder {
+    return Intl.message(
+      'Wybierz aby wczytać pozycje w zleceniu',
+      name: 'selectOrder',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Wczytaj`
+  String get loadData {
+    return Intl.message(
+      'Wczytaj',
+      name: 'loadData',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Wprowadź numer zlecenia`
+  String get selectOrderToLoad {
+    return Intl.message(
+      'Wprowadź numer zlecenia',
+      name: 'selectOrderToLoad',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Numer zlecenia`
+  String get orderNumber {
+    return Intl.message(
+      'Numer zlecenia',
+      name: 'orderNumber',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Zlecenie`
+  String get order {
+    return Intl.message(
+      'Zlecenie',
+      name: 'order',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

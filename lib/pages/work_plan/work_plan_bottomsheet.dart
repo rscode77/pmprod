@@ -25,12 +25,12 @@ class WorkPlanBottomSheet extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisSize: MainAxisSize.min,
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
         _buildTitle(context),
         const Space.vertical(4.0),
         _buildDatePicker(context),
-        const Space.vertical(4.0),
+        const Space.vertical(10.0),
         _buildLoadByOrder(context),
         const Spacer(),
         _buildLogoutUserData(context),
@@ -68,6 +68,11 @@ class WorkPlanBottomSheet extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        Text(
+          S.of(context).selectOrder,
+          style: AppTextStyles.info(),
+        ),
+        const Space.vertical(6.0),
         ActionButton(
           title: S.of(context).loadOrder,
           onPressed: () => onLoadOrder(),

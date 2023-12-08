@@ -22,6 +22,17 @@ class LoadWorkPlanEvent extends WorkPlanEvent {
   List<Object?> get props => [date];
 }
 
+class LoadOrderEvent extends WorkPlanEvent {
+  final String order;
+
+  const LoadOrderEvent({
+    required this.order,
+  });
+
+  @override
+  List<Object?> get props => [order];
+}
+
 class UpdateSelectedDateEvent extends WorkPlanEvent {
   final DateTime date;
 

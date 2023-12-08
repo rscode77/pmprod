@@ -47,7 +47,7 @@ class _RealizationTabState extends BlocPageState<RealizationTab, PartDetailBloc>
         _buildPartDescription(),
         const Space.vertical(24.0),
         _buildActualQuantityTextField(),
-        const Space.vertical(30.0),
+        const Space.vertical(16.0),
         _buildSaveButton(),
         const Space.vertical(6.0),
         _buildReportMissingPartsButton(),

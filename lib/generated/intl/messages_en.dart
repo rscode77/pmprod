@@ -34,6 +34,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Czy chcesz zaktualizować ilość zrealizowanych detali?"),
         "enterNumberOfMissingParts": MessageLookupByLibrary.simpleMessage(
             "Wprowadź ilość brakująch detali"),
+        "loadData": MessageLookupByLibrary.simpleMessage("Wczytaj"),
         "loadOrder": MessageLookupByLibrary.simpleMessage("Wczytaj zlecenie"),
         "loadPlan": MessageLookupByLibrary.simpleMessage("Wczytaj plan"),
         "login": MessageLookupByLibrary.simpleMessage("Zaloguj"),
@@ -44,6 +45,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Kliknij aby się wylogować"),
         "material": MessageLookupByLibrary.simpleMessage("Materiał:"),
         "no": MessageLookupByLibrary.simpleMessage("Nie"),
+        "order": MessageLookupByLibrary.simpleMessage("Zlecenie"),
+        "orderNumber": MessageLookupByLibrary.simpleMessage("Numer zlecenia"),
         "orderQuantity":
             MessageLookupByLibrary.simpleMessage("Ilosć w zleceniu:"),
         "partDescription": MessageLookupByLibrary.simpleMessage("Opis detalu:"),
@@ -54,6 +57,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "search": MessageLookupByLibrary.simpleMessage("Szukaj"),
         "selectDatePlan": MessageLookupByLibrary.simpleMessage(
             "Wybierz z jakiego dnia chcesz wczytać plan"),
+        "selectOrder": MessageLookupByLibrary.simpleMessage(
+            "Wybierz aby wczytać pozycje w zleceniu"),
+        "selectOrderToLoad":
+            MessageLookupByLibrary.simpleMessage("Wprowadź numer zlecenia"),
         "settings": MessageLookupByLibrary.simpleMessage("Ustawienia"),
         "userId":
             MessageLookupByLibrary.simpleMessage("Wprowadź id użytkownika"),

@@ -24,5 +24,10 @@
   "settings" : "Ustawienia",
   "selectDatePlan" : "Wybierz z jakiego dnia chcesz wczytać plan",
   "logoutUser" : "Kliknij aby się wylogować",
-  "loadOrder" : "Wczytaj zlecenie"
+  "loadOrder" : "Wczytaj zlecenie",
+  "selectOrder" : "Wybierz aby wczytać pozycje w zleceniu",
+  "loadData" : "Wczytaj",
+  "selectOrderToLoad" : "Wprowadź numer zlecenia",
+  "orderNumber" : "Numer zlecenia",
+  "order" : "Zlecenie"
 }

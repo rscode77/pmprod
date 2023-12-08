@@ -19,6 +19,7 @@ class WorkPlanBloc extends Bloc<WorkPlanEvent, WorkPlanState> {
 
   WorkPlanBloc({required this.workPlanRepository}) : super(const WorkPlanInitial([])) {
     on<WorkPlanInitialEvent>(_onWorkPlanInitialEvent);
+    on<LoadOrderEvent>(_onLoadOrderEvent);
     on<LoadWorkPlanEvent>(_onLoadWorkPlanEvent);
     on<UpdateSelectedDateEvent>(_onUpdateSelectedDateEvent);
     on<SearchInWorkPlanEvent>(_onSearchInWorkPlanEvent);
@@ -33,7 +34,6 @@ class WorkPlanBloc extends Bloc<WorkPlanEvent, WorkPlanState> {
 
   Future<void> _onLoadWorkPlanEvent(LoadWorkPlanEvent event, Emitter<WorkPlanState> emit) async {
     emit(WorkPlanLoading());
-    await Future.delayed(const Duration(seconds: 1));
     Response loadWorkPlan = await workPlanRepository.loadWorkPlan(date: event.date.getOnlyDate);
     if (loadWorkPlan.statusCode != 200) return;
     final List<PartDetailModel> parts = loadWorkPlan.convertToPartDetailList();
@@ -57,5 +57,17 @@ class WorkPlanBloc extends Bloc<WorkPlanEvent, WorkPlanState> {
         workPlan: filteredParts,
       ),
     );
+  }
+
+  Future<void> _onLoadOrderEvent(LoadOrderEvent event, Emitter<WorkPlanState> emit) async {
+    emit(WorkPlanLoading());
+    Response loadWorkPlan = await workPlanRepository.loadOrder(order: event.order);
+    if (loadWorkPlan.statusCode != 200) return;
+    final List<PartDetailModel> parts = loadWorkPlan.convertToPartDetailList();
+    workPlan = parts;
+    emit(WorkPlanLoaded(
+      selectedDate: DateTime.now(),
+      workPlan: workPlan,
+    ));
   }
 }

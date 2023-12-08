@@ -11,10 +11,11 @@ class AppDimensions {
 
 class _Height {
   final double actionButton = 46.0;
-  final double bottomSheetHeight = 350.0;
+  final double bottomSheetHeight = 320.0;
   final double iconSize = 40.0;
   final double textField = 54.0;
   final double partDrawHeight = 240.0;
+  final double dropDownButtonHeight = 46.0;
 }
 
 class _Margin {
