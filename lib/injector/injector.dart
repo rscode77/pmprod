@@ -7,6 +7,7 @@ import 'package:pmprod/repositories/network_part_operation_repository.dart';
 import 'package:pmprod/repositories/network_user_repository.dart';
 import 'package:pmprod/repositories/network_work_plan_repository.dart';
 import 'package:pmprod/repositories/part_operations_repository.dart';
+import 'package:pmprod/repositories/prodiction_order_repository.dart';
 import 'package:pmprod/repositories/user_repository.dart';
 import 'package:pmprod/repositories/work_plan_repository.dart';
 import 'package:pmprod/storages/common_storage.dart';
@@ -17,8 +18,6 @@ class Injector {
   static final Dio _dio = Dio(
     BaseOptions(
       baseUrl: Endpoints.baseUrl,
-      connectTimeout: const Duration(seconds: 10),
-      receiveTimeout: const Duration(seconds: 10),
       contentType: Headers.formUrlEncodedContentType,
       headers: {
         HttpHeaders.acceptHeader: 'application/json',},
@@ -37,6 +36,7 @@ class Injector {
   Injector._();
 
   void _init() {
+    getIt.registerLazySingleton<ProductionOrderRepository>(() => ProductionOrderRepository());
     getIt.registerLazySingleton<CommonStorage>(() => CommonStorage(sharedPreferences: _sharedPreferences));
     getIt.registerLazySingleton<AuthenticationRepository>(() => NetworkUserRepository(dio: _dio));
     getIt.registerLazySingleton<PartOperationsRepository>(() => NetworkPartOperationsRepository(dio: _dio));

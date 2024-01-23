@@ -10,26 +10,35 @@ class PartDetailsInitialEvent extends PartDetailsEvent {
 }
 
 class UpdateQuantityEvent extends PartDetailsEvent {
+  final String username;
   final int quantity;
 
-  const UpdateQuantityEvent({required this.quantity});
+  const UpdateQuantityEvent({
+    required this.username,
+    required this.quantity,
+  });
 
   @override
-  List<Object?> get props => [quantity];
+  List<Object?> get props => [quantity,username];
 }
 
 class ReportMissingPartEvent extends PartDetailsEvent {
-  final int partUniqueId;
   final int quantity;
+  final String reportingPerson;
 
   const ReportMissingPartEvent({
-    required this.partUniqueId,
+    required this.reportingPerson,
     required this.quantity,
   });
 
   @override
   List<Object?> get props => [
-        partUniqueId,
+        reportingPerson,
         quantity,
       ];
+}
+
+class LoadPartOrderStatuses extends PartDetailsEvent {
+  @override
+  List<Object?> get props => [];
 }

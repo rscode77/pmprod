@@ -7,4 +7,6 @@ abstract class PartOperationsRepository {
  Future<Response> reportMissingPart(ReportMissingPartRequest request);
  Future<Response> realizePart(RealizePartRequest request);
  Future<Response> getPartOperations(GetPartOperatinsRequest request);
+ Future<Response> loadPartStatuses(GetPartOperatinsRequest request);
+ Future<Response> getPartTechnologyCart(String partSymbol);
 }

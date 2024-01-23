@@ -36,4 +36,22 @@ class NetworkPartOperationsRepository implements PartOperationsRepository {
     );
     return response;
   }
+
+  @override
+  Future<Response> loadPartStatuses(GetPartOperatinsRequest request) async {
+    final Response response = await dio.post(
+      PartOperationsEndpoints.loadPartStatuses,
+      data: request.toJson(),
+    );
+    return response;
+  }
+
+  @override
+  Future<Response> getPartTechnologyCart(String partSymbol) async {
+    final Response response = await dio.get(
+      PartOperationsEndpoints.getPartTechnologyCart,
+      queryParameters: {'partSymbol': partSymbol},
+    );
+    return response;
+  }
 }

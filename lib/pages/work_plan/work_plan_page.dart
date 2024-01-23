@@ -1,15 +1,15 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pmprod/bloc/authentication_bloc.dart';
-import 'package:pmprod/extensions/datetime_extension.dart';
+import 'package:pmprod/extensions/sized_box_extension.dart';
 import 'package:pmprod/extensions/string_extension.dart';
-import 'package:pmprod/generated/l10n.dart';
 import 'package:pmprod/pages/work_plan/bloc/work_plan_bloc.dart';
 import 'package:pmprod/pages/work_plan/work_plan_bottomsheet.dart';
 import 'package:pmprod/pages/work_plan/work_plan_part_list.dart';
 import 'package:pmprod/routing/routing.dart';
+import 'package:pmprod/styles/app_colors.dart';
 import 'package:pmprod/styles/app_dimensions.dart';
-import 'package:pmprod/styles/app_text_styles.dart';
 import 'package:pmprod/widgets/load_order_dialog.dart';
 
 class WorkPlanPage extends StatefulWidget {
@@ -20,6 +20,8 @@ class WorkPlanPage extends StatefulWidget {
 }
 
 class _WorkPlanPageState extends State<WorkPlanPage> {
+  final TextEditingController _searchController = TextEditingController();
+
   late final AuthenticationBloc _authenticationBloc;
   late final WorkPlanBloc _workPlanBloc;
 
@@ -55,7 +57,7 @@ class _WorkPlanPageState extends State<WorkPlanPage> {
             BlocListener<AuthenticationBloc, AuthenticationState>(listener: _loginListener),
           ],
           child: BlocBuilder<WorkPlanBloc, WorkPlanState>(
-            builder: (context, state) {
+            builder: (_, state) {
               return _buildBody(state);
             },
           ),
@@ -78,6 +80,7 @@ class _WorkPlanPageState extends State<WorkPlanPage> {
   Future _buildBottomSheet() {
     return showModalBottomSheet(
       context: context,
+      backgroundColor: AppColors.white,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(
           top: Radius.circular(AppDimensions.defaultRadius),
@@ -85,6 +88,7 @@ class _WorkPlanPageState extends State<WorkPlanPage> {
       ),
       builder: (context) {
         return Container(
+          color: AppColors.white,
           padding: const EdgeInsets.all(AppDimensions.defaultPadding),
           height: AppDimensions.height.bottomSheetHeight,
           child: _buildBottomSheetItems(),
@@ -94,28 +98,17 @@ class _WorkPlanPageState extends State<WorkPlanPage> {
   }
 
   Widget _buildBottomSheetItems() {
-    final TextEditingController dataController = TextEditingController(text: _selectedDate?.getOnlyDate);
     return WorkPlanBottomSheet(
       username: _loggedInUsername.orEmpty(),
       onLoadOrder: _onLoadOrder,
       onLogout: _logoutUser,
-      onShowDatePicker: _showDatePicker,
-      dataController: dataController,
+      onLoadWorkPlan: _onLoadWorkPlan,
+      onNavigateToPartInProgress: _onNavigateToPartInProgress,
+      selectedDate: _selectedDate ?? DateTime.now(),
     );
   }
 
-  Future<void> _showDatePicker() async {
-    DateTime? selectedDate = await showDatePicker(
-      context: context,
-      initialDate: DateTime.now(),
-      firstDate: DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day - 1),
-      lastDate: DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day + 14),
-    );
-    if (selectedDate == null || _selectedDate == selectedDate) return;
-    _updateSelectedDate(selectedDate);
-  }
-
-  void _updateSelectedDate(DateTime selectedDate) {
+  void _onLoadWorkPlan(DateTime selectedDate) {
     _workPlanBloc.add(UpdateSelectedDateEvent(date: selectedDate));
     Navigator.pop(context);
   }
@@ -155,13 +148,33 @@ class _WorkPlanPageState extends State<WorkPlanPage> {
 
   AppBar _buildAppBar() {
     return AppBar(
+      backgroundColor: AppColors.white,
       centerTitle: true,
-      titleTextStyle: AppTextStyles.appBar(),
-      title: Text(S.of(context).workPlan),
       leading: IconButton(
-        icon: const Icon(Icons.settings),
+        icon: const Icon(
+          Icons.menu_rounded,
+          size: 25,
+        ),
         onPressed: () async => await _buildBottomSheet(),
       ),
+      actions: [
+        ValueListenableBuilder(
+          valueListenable: _workPlanBloc.workPlanShowNotRealized,
+          builder: (context, value, _) => CupertinoSwitch(
+            activeColor: AppColors.orange,
+            value: value,
+            onChanged: (value) {
+              _workPlanBloc.add(
+                SetWorkPlanNotRealized(
+                  date: _selectedDate ?? DateTime.now(),
+                  query: _searchController.text,
+                ),
+              );
+            },
+          ),
+        ),
+        const Space.horizontal(8.0),
+      ],
     );
   }
 
@@ -174,32 +187,47 @@ class _WorkPlanPageState extends State<WorkPlanPage> {
 
   Widget _buildLoading() {
     return const Center(
-      child: CircularProgressIndicator(),
+      child: SizedBox(
+        height: 50,
+        width: 50,
+        child: CircularProgressIndicator(
+          color: AppColors.orange,
+        ),
+      ),
     );
   }
 
   Widget _buildPartList(WorkPlanLoaded state) {
     return Center(
       child: WorkPlanPartList(
-          partTabList: state.workPlan,
-          onPartPressed: (part) => Navigator.of(context).pushNamed(
-                Routing.partDetail,
-                arguments: part,
-              ),
-          onSearchChanged: (String query) {
-            _workPlanBloc.add(
-              SearchInWorkPlanEvent(
-                query: query,
-                date: _selectedDate ?? DateTime.now(),
-              ),
-            );
-          }),
+        partTabList: state.workPlan,
+        onPartPressed: (part) => Navigator.of(context).pushNamed(
+          Routing.partDetail,
+          arguments: part,
+        ),
+        onSearchChanged: (String query) {
+          _searchController.text = query;
+          _workPlanBloc.add(
+            SearchInWorkPlanEvent(
+              query: query,
+              date: _selectedDate ?? DateTime.now(),
+            ),
+          );
+        },
+      ),
     );
   }
 
   Widget _buildError(WorkPlanFailed state) {
     return const Center(
       child: Text('Error'),
+    );
+  }
+
+  void _onNavigateToPartInProgress() {
+    Navigator.pop(context);
+    Navigator.of(context).pushNamed(
+      Routing.partInProgress,
     );
   }
 }

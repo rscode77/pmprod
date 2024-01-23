@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pmprod/styles/app_colors.dart';
 import 'package:pmprod/styles/app_dimensions.dart';
 import 'package:pmprod/styles/app_text_styles.dart';
 
@@ -26,6 +27,7 @@ class _DataTextFieldState extends State<DataTextField> {
     return SizedBox(
       height: AppDimensions.height.textField,
       child: TextField(
+       textInputAction: TextInputAction.done,
         onTap: widget.onTap,
         readOnly: widget.isReadOnly,
         textAlignVertical: TextAlignVertical.center,
@@ -34,21 +36,35 @@ class _DataTextFieldState extends State<DataTextField> {
         controller: widget.controller,
         style: AppTextStyles.textField(),
         decoration: InputDecoration(
+          fillColor: AppColors.white,
           hintText: widget.hintText,
           hintStyle: AppTextStyles.textField(),
           contentPadding: EdgeInsets.zero,
-          focusedBorder: const OutlineInputBorder(
+          enabledBorder: const OutlineInputBorder(
             borderRadius: BorderRadius.all(
-              Radius.circular(AppDimensions.defaultRadius),
+              Radius.circular(AppDimensions.buttonRadius),
             ),
             borderSide: BorderSide(
-              color: Colors.blue,
-              width: 2.0,
+              color: AppColors.grey200,
+              width: 1.0,
+            ),
+          ),
+          focusedBorder: const OutlineInputBorder(
+            borderRadius: BorderRadius.all(
+              Radius.circular(AppDimensions.buttonRadius),
+            ),
+            borderSide: BorderSide(
+              color: AppColors.orange,
+              width: 1.0,
             ),
           ),
           border: const OutlineInputBorder(
+            borderSide: BorderSide(
+              color: AppColors.grey,
+              width: 1.0,
+            ),
             borderRadius: BorderRadius.all(
-              Radius.circular(AppDimensions.defaultRadius),
+              Radius.circular(AppDimensions.buttonRadius),
             ),
           ),
         ),

@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_cached_pdfview/flutter_cached_pdfview.dart';
 import 'package:pmprod/extensions/sized_box_extension.dart';
 import 'package:pmprod/generated/l10n.dart';
 import 'package:pmprod/networking/models/part_details_model.dart';
+import 'package:pmprod/styles/app_colors.dart';
 import 'package:pmprod/styles/app_decoration.dart';
 import 'package:pmprod/styles/app_dimensions.dart';
 import 'package:pmprod/styles/app_text_styles.dart';
+import 'package:pmprod/widgets/part_quantity.dart';
+import 'package:pmprod/widgets/show_pdf.dart';
 
 class WorkPlanPartList extends StatefulWidget {
   final Function(PartDetailModel) onPartPressed;
@@ -30,6 +34,7 @@ class _WorkPlanPartListState extends State<WorkPlanPartList> {
         _buildSearchBar(),
         Expanded(
           child: ListView.builder(
+            key: UniqueKey(),
             shrinkWrap: true,
             itemCount: widget.partTabList.length,
             itemBuilder: (_, index) {
@@ -43,18 +48,29 @@ class _WorkPlanPartListState extends State<WorkPlanPartList> {
 
   Widget _buildSearchBar() {
     return Container(
-      decoration: AppDecoration.boxDecoration(),
+      decoration: AppDecoration.searchBarDecoration(),
       padding: const EdgeInsets.symmetric(
         horizontal: AppDimensions.defaultPadding,
       ),
       margin: EdgeInsets.all(AppDimensions.margin.partDetailsListMargin),
-      child: TextField(
-        style: AppTextStyles.textField(),
-        onChanged: (value) => widget.onSearchChanged(value),
-        decoration: InputDecoration(
-          hintText: S.of(context).search,
-          border: InputBorder.none,
-        ),
+      child: Row(
+        children: [
+          const Icon(
+            Icons.search_rounded,
+            color: AppColors.blackPrimary,
+          ),
+          const Space.horizontal(8.0),
+          Expanded(
+            child: TextField(
+              style: AppTextStyles.textField(),
+              onChanged: (value) => widget.onSearchChanged(value),
+              decoration: InputDecoration(
+                hintText: S.of(context).search,
+                border: InputBorder.none,
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -63,31 +79,34 @@ class _WorkPlanPartListState extends State<WorkPlanPartList> {
     return InkWell(
       onTap: () => widget.onPartPressed(part),
       child: Container(
-        decoration: AppDecoration.boxDecoration(),
-        padding: const EdgeInsets.all(AppDimensions.defaultPadding),
+        decoration: AppDecoration.workPlanItemDecoration(),
+        padding: const EdgeInsets.only(
+          top: AppDimensions.defaultPadding,
+          bottom: AppDimensions.defaultPadding,
+          left: AppDimensions.defaultPadding,
+        ),
         margin: EdgeInsets.all(AppDimensions.margin.partDetailsListMargin),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            _buildContractorName(part.contractor),
-            _buildImageSection(),
             const Space.vertical(8.0),
+            _buildImageSection(part.draw),
+            const Space.vertical(24.0),
+            _buildContractorName(part.contractor),
             Row(
               children: [
-                _buildStatusIcon(
-                  quantity: part.quantity,
-                  realizedQuantity: part.realizedQuantity,
-                ),
                 _buildDetailsSection(
                   mainOrder: part.mainOrder,
                   productionOrder: part.productionOrder,
                   partName: part.partName,
+                  material: part.material,
                 ),
                 const Spacer(),
-                _buildPartQuantity(
+                PartQuantityWidget(
                   orderQuantity: part.quantity.toInt(),
                   realizedQuantity: part.realizedQuantity.toInt(),
                 ),
+                const Space.horizontal(16.0),
               ],
             ),
           ],
@@ -110,13 +129,14 @@ class _WorkPlanPartListState extends State<WorkPlanPartList> {
     );
   }
 
-  Widget _buildImageSection() {
+  Widget _buildImageSection(String? draw) {
+    if (draw == null) return const SizedBox.shrink();
     return SizedBox(
       height: AppDimensions.height.partDrawHeight,
       width: double.infinity,
-      child: Image.network(
-        'https://cdn.cadcrowd.com/3d-models/f8/f3/f8f39fbc-f099-4f09-b95e-bd7b289b7897/gallery/8b778e33-56e5-460c-ae2f-42a63c4cfede/medium.jpg',
-        fit: BoxFit.fitHeight,
+      child: ShowPdf(
+        fitPolicy: FitPolicy.BOTH,
+        pdf: draw,
       ),
     );
   }
@@ -125,70 +145,32 @@ class _WorkPlanPartListState extends State<WorkPlanPartList> {
     required String mainOrder,
     required String productionOrder,
     required String partName,
-  }) {
-    return Padding(
-      padding: const EdgeInsets.only(
-        left: AppDimensions.defaultPadding,
-      ),
-      child: Row(
-        children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                mainOrder,
-                style: AppTextStyles.info(),
-              ),
-              Text(
-                productionOrder,
-                style: AppTextStyles.info(),
-              ),
-              Text(
-                partName,
-                style: AppTextStyles.info(),
-              ),
-            ],
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildPartQuantity({
-    required int orderQuantity,
-    required int realizedQuantity,
+    required String material,
   }) {
     return Row(
       children: [
-        Padding(
-          padding: const EdgeInsets.only(right: AppDimensions.defaultPadding),
-          child: Text(
-            '$realizedQuantity/$orderQuantity',
-            style: AppTextStyles.title(),
-          ),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              mainOrder,
+              style: AppTextStyles.info(),
+            ),
+            Text(
+              productionOrder,
+              style: AppTextStyles.info(),
+            ),
+            Text(
+              material,
+              style: AppTextStyles.info(),
+            ),
+            Text(
+              partName.length > 32 ? '${partName.substring(0, 32)}...' : partName,
+              style: AppTextStyles.info(),
+            ),
+          ],
         ),
       ],
-    );
-  }
-
-  Widget _buildStatusIcon({
-    required quantity,
-    required realizedQuantity,
-  }) {
-    if (quantity >= realizedQuantity) {
-      return Icon(
-        Icons.circle_outlined,
-        size: AppDimensions.height.iconSize,
-      );
-    } else if (realizedQuantity > 0) {
-      return Icon(
-        Icons.build_circle_rounded,
-        size: AppDimensions.height.iconSize,
-      );
-    }
-    return Icon(
-      Icons.check_circle_rounded,
-      size: AppDimensions.height.iconSize,
     );
   }
 }

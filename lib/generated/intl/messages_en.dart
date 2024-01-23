@@ -25,9 +25,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "actualQuantity":
             MessageLookupByLibrary.simpleMessage("Aktualna ilość"),
         "actualRealizedQuantity": MessageLookupByLibrary.simpleMessage(
-            "Wprowadź aktualnie zrealizowaną ilość detali"),
+            "Wprowadź sumę zrealizowanych detali"),
         "appName": MessageLookupByLibrary.simpleMessage("PressMetal Produkcja"),
+        "back": MessageLookupByLibrary.simpleMessage("Wróć"),
+        "bending": MessageLookupByLibrary.simpleMessage("Gięcie"),
         "cancel": MessageLookupByLibrary.simpleMessage("Anuluj"),
+        "comments": MessageLookupByLibrary.simpleMessage("Uwagi"),
         "confirmOperation":
             MessageLookupByLibrary.simpleMessage("Potwierdź operację"),
         "confirmQuantity": MessageLookupByLibrary.simpleMessage(
@@ -37,6 +40,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "loadData": MessageLookupByLibrary.simpleMessage("Wczytaj"),
         "loadOrder": MessageLookupByLibrary.simpleMessage("Wczytaj zlecenie"),
         "loadPlan": MessageLookupByLibrary.simpleMessage("Wczytaj plan"),
+        "loadWorkPlan":
+            MessageLookupByLibrary.simpleMessage("Wczytaj plan dnia"),
         "login": MessageLookupByLibrary.simpleMessage("Zaloguj"),
         "loginFailed": MessageLookupByLibrary.simpleMessage(
             "Nieprawidłowe dane logowania"),
@@ -44,12 +49,25 @@ class MessageLookup extends MessageLookupByLibrary {
         "logoutUser":
             MessageLookupByLibrary.simpleMessage("Kliknij aby się wylogować"),
         "material": MessageLookupByLibrary.simpleMessage("Materiał:"),
+        "missingPartsReported":
+            MessageLookupByLibrary.simpleMessage("Brakujące detale zgłoszone"),
+        "missingPartsReportedFaild": MessageLookupByLibrary.simpleMessage(
+            "Nie udało się zgłosić brakujących detali"),
         "no": MessageLookupByLibrary.simpleMessage("Nie"),
+        "noStartedOrders":
+            MessageLookupByLibrary.simpleMessage("Brak rozpoczętych zleceń"),
+        "notRealized": MessageLookupByLibrary.simpleMessage("Niezrealizowane"),
         "order": MessageLookupByLibrary.simpleMessage("Zlecenie"),
         "orderNumber": MessageLookupByLibrary.simpleMessage("Numer zlecenia"),
         "orderQuantity":
             MessageLookupByLibrary.simpleMessage("Ilosć w zleceniu:"),
         "partDescription": MessageLookupByLibrary.simpleMessage("Opis detalu:"),
+        "partInProgress":
+            MessageLookupByLibrary.simpleMessage("Części w trakcie realizacji"),
+        "partQuantityUpdated":
+            MessageLookupByLibrary.simpleMessage("Ilość detali zaktualizowana"),
+        "partQuantityUpdatedFaild": MessageLookupByLibrary.simpleMessage(
+            "Nie udało się zaktualizować ilości detali"),
         "realized": MessageLookupByLibrary.simpleMessage("Zrealizowane"),
         "reportMissingParts":
             MessageLookupByLibrary.simpleMessage("Zgłoś brakujące detale"),
@@ -62,6 +80,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "selectOrderToLoad":
             MessageLookupByLibrary.simpleMessage("Wprowadź numer zlecenia"),
         "settings": MessageLookupByLibrary.simpleMessage("Ustawienia"),
+        "start": MessageLookupByLibrary.simpleMessage("Rozpocznij"),
+        "startRealizaton": MessageLookupByLibrary.simpleMessage(
+            "Czy chcesz rozpocząć realizację detalu?"),
+        "stop": MessageLookupByLibrary.simpleMessage("Zakończ"),
         "userId":
             MessageLookupByLibrary.simpleMessage("Wprowadź id użytkownika"),
         "workPlan": MessageLookupByLibrary.simpleMessage("Plan pracy"),

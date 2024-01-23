@@ -22,4 +22,16 @@ extension ListProductDetailsExtension on List<PartDetailModel> {
       },
     ).toList();
   }
+
+  List<PartDetailModel> filterByQueryAndQuantity() {
+    return where(
+      (part) {
+        return _isRealizedPartLessThan(part);
+      },
+    ).toList();
+  }
+
+  bool _isRealizedPartLessThan(PartDetailModel part) {
+    return part.realizedQuantity < part.quantity;
+  }
 }

@@ -37,7 +37,6 @@ class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState> 
   Future<void> _onLoginInitialEvent(AuthenticationEvent event, Emitter<AuthenticationState> emit) async {
     commonStorage.removeKey(CommonStorageKeys.userId);
     emit(LoginLoading());
-    //Show circular progress indicator for 1 second
     await Future.delayed(
       const Duration(milliseconds: 1000),
     );

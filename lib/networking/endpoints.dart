@@ -18,4 +18,5 @@ class PartOperationsEndpoints with Endpoints {
   static const String loadPartStatuses = '$_prefix/LoadPartStatuses';
   static const String realizePart = '$_prefix/RealizePart';
   static const String reportMissingPart = '$_prefix/ReportMissingPart';
+  static const String getPartTechnologyCart = '$_prefix/GetPartTechnologyCart';
 }

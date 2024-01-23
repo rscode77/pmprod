@@ -16,6 +16,8 @@ class PartDetailModel with _$PartDetailModel {
     required String contractor,
     @JsonKey(name: 'MainOrder')
     required String mainOrder,
+    @JsonKey(name: 'MainOrderId')
+    required int mainOrderId,
     @JsonKey(name: 'PartSymbol')
     required String partSymbol,
     @JsonKey(name: 'Draw')
@@ -26,8 +28,12 @@ class PartDetailModel with _$PartDetailModel {
     required DateTime deadline,
     @JsonKey(name: 'RealizedQuantity')
     required double realizedQuantity,
+    @JsonKey(name: 'PartId')
+    required int partId,
     @JsonKey(name: 'PartUniqueId')
     required int partUniqueId,
+    @JsonKey(name: 'Comments')
+    required String comments,
     @JsonKey(name: 'Magazine')
     required Magazine magazine,
   }) = _PartDetailModel;

@@ -29,9 +29,19 @@ class WorkPlanLoaded extends WorkPlanState {
 
   @override
   List<Object> get props => [
-        selectedDate,
-        workPlan,
-      ];
+    selectedDate,
+    workPlan,
+  ];
+
+  WorkPlanLoaded copyWith({
+    List<PartDetailModel>? workPlan,
+    DateTime? selectedDate,
+  }) {
+    return WorkPlanLoaded(
+      workPlan: workPlan ?? this.workPlan,
+      selectedDate: selectedDate ?? this.selectedDate,
+    );
+  }
 }
 
 class WorkPlanFailed extends WorkPlanState {

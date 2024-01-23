@@ -59,3 +59,32 @@ class SearchInWorkPlanEvent extends WorkPlanEvent {
         query,
       ];
 }
+
+class UpdateWorkPlanQuantity extends WorkPlanEvent {
+  final int quantity;
+  final int partUniqueId;
+
+  const UpdateWorkPlanQuantity({
+    required this.quantity,
+    required this.partUniqueId,
+  });
+
+  @override
+  List<Object?> get props => [
+        quantity,
+        partUniqueId,
+      ];
+}
+
+class SetWorkPlanNotRealized extends WorkPlanEvent {
+  final DateTime date;
+  final String query;
+
+  const SetWorkPlanNotRealized({
+    required this.date,
+    required this.query,
+  });
+
+  @override
+  List<Object?> get props => [date, query];
+}

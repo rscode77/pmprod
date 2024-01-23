@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pmprod/bloc/authentication_bloc.dart';
 import 'package:pmprod/extensions/sized_box_extension.dart';
 import 'package:pmprod/generated/l10n.dart';
@@ -72,9 +73,14 @@ class _LoginPageState extends BlocPageState<LoginPage, AuthenticationBloc> {
   }
 
   Widget _buildHeader() {
-    return Text(
-      S.of(context).appName,
-      style: AppTextStyles.title(),
+    return Column(
+      children: [
+        SvgPicture.asset(
+          'assets/svg/logo_press.svg',
+          width: AppDimensions.width.logo,
+        ),
+        const Space.vertical(30),
+      ],
     );
   }
 
@@ -89,7 +95,7 @@ class _LoginPageState extends BlocPageState<LoginPage, AuthenticationBloc> {
     return ActionButton(
       title: S.of(context).login,
       onPressed: () => bloc.add(
-         LoginUserEvent(userId: _userIdController.value.text),
+        LoginUserEvent(userId: _userIdController.value.text),
       ),
     );
   }

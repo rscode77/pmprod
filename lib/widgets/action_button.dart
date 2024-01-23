@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pmprod/styles/app_colors.dart';
 import 'package:pmprod/styles/app_dimensions.dart';
-import 'package:pmprod/styles/app_shadows.dart';
 import 'package:pmprod/styles/app_text_styles.dart';
 
 class ActionButton extends StatelessWidget {
@@ -10,13 +9,15 @@ class ActionButton extends StatelessWidget {
   final VoidCallback? onPressed;
   final Color textColor;
   final String title;
+  final double width;
 
   const ActionButton({
     super.key,
-    this.borderColor = AppColors.transparent,
-    this.fillColor = AppColors.red,
+    this.borderColor = Colors.transparent,
+    this.fillColor = AppColors.blackPrimary,
     this.onPressed,
     this.textColor = AppColors.white,
+    this.width = double.infinity,
     required this.title,
   });
 
@@ -24,14 +25,13 @@ class ActionButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       height: AppDimensions.height.actionButton,
-      width: double.infinity,
+      width: width,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
           backgroundColor: fillColor,
-          shadowColor: AppShadows.defaultShadow().color,
-          elevation: 12.0,
+          elevation: 0.0,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(AppDimensions.defaultRadius),
+            borderRadius: BorderRadius.circular(AppDimensions.buttonRadius),
           ),
         ),
         onPressed: onPressed,

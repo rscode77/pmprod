@@ -14,12 +14,15 @@ _$PartDetailModelImpl _$$PartDetailModelImplFromJson(
       quantity: (json['Quantity'] as num).toDouble(),
       contractor: json['Contractor'] as String,
       mainOrder: json['MainOrder'] as String,
+      mainOrderId: json['MainOrderId'] as int,
       partSymbol: json['PartSymbol'] as String,
       draw: json['Draw'] as String?,
       material: json['Material'] as String,
       deadline: DateTime.parse(json['Deadline'] as String),
       realizedQuantity: (json['RealizedQuantity'] as num).toDouble(),
+      partId: json['PartId'] as int,
       partUniqueId: json['PartUniqueId'] as int,
+      comments: json['Comments'] as String,
       magazine: $enumDecode(_$MagazineEnumMap, json['Magazine']),
     );
 
@@ -31,12 +34,15 @@ Map<String, dynamic> _$$PartDetailModelImplToJson(
       'Quantity': instance.quantity,
       'Contractor': instance.contractor,
       'MainOrder': instance.mainOrder,
+      'MainOrderId': instance.mainOrderId,
       'PartSymbol': instance.partSymbol,
       'Draw': instance.draw,
       'Material': instance.material,
       'Deadline': instance.deadline.toIso8601String(),
       'RealizedQuantity': instance.realizedQuantity,
+      'PartId': instance.partId,
       'PartUniqueId': instance.partUniqueId,
+      'Comments': instance.comments,
       'Magazine': _$MagazineEnumMap[instance.magazine]!,
     };
 

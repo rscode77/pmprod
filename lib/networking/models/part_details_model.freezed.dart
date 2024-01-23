@@ -30,6 +30,8 @@ mixin _$PartDetailModel {
   String get contractor => throw _privateConstructorUsedError;
   @JsonKey(name: 'MainOrder')
   String get mainOrder => throw _privateConstructorUsedError;
+  @JsonKey(name: 'MainOrderId')
+  int get mainOrderId => throw _privateConstructorUsedError;
   @JsonKey(name: 'PartSymbol')
   String get partSymbol => throw _privateConstructorUsedError;
   @JsonKey(name: 'Draw')
@@ -40,8 +42,12 @@ mixin _$PartDetailModel {
   DateTime get deadline => throw _privateConstructorUsedError;
   @JsonKey(name: 'RealizedQuantity')
   double get realizedQuantity => throw _privateConstructorUsedError;
+  @JsonKey(name: 'PartId')
+  int get partId => throw _privateConstructorUsedError;
   @JsonKey(name: 'PartUniqueId')
   int get partUniqueId => throw _privateConstructorUsedError;
+  @JsonKey(name: 'Comments')
+  String get comments => throw _privateConstructorUsedError;
   @JsonKey(name: 'Magazine')
   Magazine get magazine => throw _privateConstructorUsedError;
 
@@ -63,12 +69,15 @@ abstract class $PartDetailModelCopyWith<$Res> {
       @JsonKey(name: 'Quantity') double quantity,
       @JsonKey(name: 'Contractor') String contractor,
       @JsonKey(name: 'MainOrder') String mainOrder,
+      @JsonKey(name: 'MainOrderId') int mainOrderId,
       @JsonKey(name: 'PartSymbol') String partSymbol,
       @JsonKey(name: 'Draw') String? draw,
       @JsonKey(name: 'Material') String material,
       @JsonKey(name: 'Deadline') DateTime deadline,
       @JsonKey(name: 'RealizedQuantity') double realizedQuantity,
+      @JsonKey(name: 'PartId') int partId,
       @JsonKey(name: 'PartUniqueId') int partUniqueId,
+      @JsonKey(name: 'Comments') String comments,
       @JsonKey(name: 'Magazine') Magazine magazine});
 }
 
@@ -90,12 +99,15 @@ class _$PartDetailModelCopyWithImpl<$Res, $Val extends PartDetailModel>
     Object? quantity = null,
     Object? contractor = null,
     Object? mainOrder = null,
+    Object? mainOrderId = null,
     Object? partSymbol = null,
     Object? draw = freezed,
     Object? material = null,
     Object? deadline = null,
     Object? realizedQuantity = null,
+    Object? partId = null,
     Object? partUniqueId = null,
+    Object? comments = null,
     Object? magazine = null,
   }) {
     return _then(_value.copyWith(
@@ -119,6 +131,10 @@ class _$PartDetailModelCopyWithImpl<$Res, $Val extends PartDetailModel>
           ? _value.mainOrder
           : mainOrder // ignore: cast_nullable_to_non_nullable
               as String,
+      mainOrderId: null == mainOrderId
+          ? _value.mainOrderId
+          : mainOrderId // ignore: cast_nullable_to_non_nullable
+              as int,
       partSymbol: null == partSymbol
           ? _value.partSymbol
           : partSymbol // ignore: cast_nullable_to_non_nullable
@@ -139,10 +155,18 @@ class _$PartDetailModelCopyWithImpl<$Res, $Val extends PartDetailModel>
           ? _value.realizedQuantity
           : realizedQuantity // ignore: cast_nullable_to_non_nullable
               as double,
+      partId: null == partId
+          ? _value.partId
+          : partId // ignore: cast_nullable_to_non_nullable
+              as int,
       partUniqueId: null == partUniqueId
           ? _value.partUniqueId
           : partUniqueId // ignore: cast_nullable_to_non_nullable
               as int,
+      comments: null == comments
+          ? _value.comments
+          : comments // ignore: cast_nullable_to_non_nullable
+              as String,
       magazine: null == magazine
           ? _value.magazine
           : magazine // ignore: cast_nullable_to_non_nullable
@@ -165,12 +189,15 @@ abstract class _$$PartDetailModelImplCopyWith<$Res>
       @JsonKey(name: 'Quantity') double quantity,
       @JsonKey(name: 'Contractor') String contractor,
       @JsonKey(name: 'MainOrder') String mainOrder,
+      @JsonKey(name: 'MainOrderId') int mainOrderId,
       @JsonKey(name: 'PartSymbol') String partSymbol,
       @JsonKey(name: 'Draw') String? draw,
       @JsonKey(name: 'Material') String material,
       @JsonKey(name: 'Deadline') DateTime deadline,
       @JsonKey(name: 'RealizedQuantity') double realizedQuantity,
+      @JsonKey(name: 'PartId') int partId,
       @JsonKey(name: 'PartUniqueId') int partUniqueId,
+      @JsonKey(name: 'Comments') String comments,
       @JsonKey(name: 'Magazine') Magazine magazine});
 }
 
@@ -190,12 +217,15 @@ class __$$PartDetailModelImplCopyWithImpl<$Res>
     Object? quantity = null,
     Object? contractor = null,
     Object? mainOrder = null,
+    Object? mainOrderId = null,
     Object? partSymbol = null,
     Object? draw = freezed,
     Object? material = null,
     Object? deadline = null,
     Object? realizedQuantity = null,
+    Object? partId = null,
     Object? partUniqueId = null,
+    Object? comments = null,
     Object? magazine = null,
   }) {
     return _then(_$PartDetailModelImpl(
@@ -219,6 +249,10 @@ class __$$PartDetailModelImplCopyWithImpl<$Res>
           ? _value.mainOrder
           : mainOrder // ignore: cast_nullable_to_non_nullable
               as String,
+      mainOrderId: null == mainOrderId
+          ? _value.mainOrderId
+          : mainOrderId // ignore: cast_nullable_to_non_nullable
+              as int,
       partSymbol: null == partSymbol
           ? _value.partSymbol
           : partSymbol // ignore: cast_nullable_to_non_nullable
@@ -239,10 +273,18 @@ class __$$PartDetailModelImplCopyWithImpl<$Res>
           ? _value.realizedQuantity
           : realizedQuantity // ignore: cast_nullable_to_non_nullable
               as double,
+      partId: null == partId
+          ? _value.partId
+          : partId // ignore: cast_nullable_to_non_nullable
+              as int,
       partUniqueId: null == partUniqueId
           ? _value.partUniqueId
           : partUniqueId // ignore: cast_nullable_to_non_nullable
               as int,
+      comments: null == comments
+          ? _value.comments
+          : comments // ignore: cast_nullable_to_non_nullable
+              as String,
       magazine: null == magazine
           ? _value.magazine
           : magazine // ignore: cast_nullable_to_non_nullable
@@ -260,12 +302,15 @@ class _$PartDetailModelImpl implements _PartDetailModel {
       @JsonKey(name: 'Quantity') required this.quantity,
       @JsonKey(name: 'Contractor') required this.contractor,
       @JsonKey(name: 'MainOrder') required this.mainOrder,
+      @JsonKey(name: 'MainOrderId') required this.mainOrderId,
       @JsonKey(name: 'PartSymbol') required this.partSymbol,
       @JsonKey(name: 'Draw') required this.draw,
       @JsonKey(name: 'Material') required this.material,
       @JsonKey(name: 'Deadline') required this.deadline,
       @JsonKey(name: 'RealizedQuantity') required this.realizedQuantity,
+      @JsonKey(name: 'PartId') required this.partId,
       @JsonKey(name: 'PartUniqueId') required this.partUniqueId,
+      @JsonKey(name: 'Comments') required this.comments,
       @JsonKey(name: 'Magazine') required this.magazine});
 
   factory _$PartDetailModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -287,6 +332,9 @@ class _$PartDetailModelImpl implements _PartDetailModel {
   @JsonKey(name: 'MainOrder')
   final String mainOrder;
   @override
+  @JsonKey(name: 'MainOrderId')
+  final int mainOrderId;
+  @override
   @JsonKey(name: 'PartSymbol')
   final String partSymbol;
   @override
@@ -302,15 +350,21 @@ class _$PartDetailModelImpl implements _PartDetailModel {
   @JsonKey(name: 'RealizedQuantity')
   final double realizedQuantity;
   @override
+  @JsonKey(name: 'PartId')
+  final int partId;
+  @override
   @JsonKey(name: 'PartUniqueId')
   final int partUniqueId;
+  @override
+  @JsonKey(name: 'Comments')
+  final String comments;
   @override
   @JsonKey(name: 'Magazine')
   final Magazine magazine;
 
   @override
   String toString() {
-    return 'PartDetailModel(productionOrder: $productionOrder, partName: $partName, quantity: $quantity, contractor: $contractor, mainOrder: $mainOrder, partSymbol: $partSymbol, draw: $draw, material: $material, deadline: $deadline, realizedQuantity: $realizedQuantity, partUniqueId: $partUniqueId, magazine: $magazine)';
+    return 'PartDetailModel(productionOrder: $productionOrder, partName: $partName, quantity: $quantity, contractor: $contractor, mainOrder: $mainOrder, mainOrderId: $mainOrderId, partSymbol: $partSymbol, draw: $draw, material: $material, deadline: $deadline, realizedQuantity: $realizedQuantity, partId: $partId, partUniqueId: $partUniqueId, comments: $comments, magazine: $magazine)';
   }
 
   @override
@@ -328,6 +382,8 @@ class _$PartDetailModelImpl implements _PartDetailModel {
                 other.contractor == contractor) &&
             (identical(other.mainOrder, mainOrder) ||
                 other.mainOrder == mainOrder) &&
+            (identical(other.mainOrderId, mainOrderId) ||
+                other.mainOrderId == mainOrderId) &&
             (identical(other.partSymbol, partSymbol) ||
                 other.partSymbol == partSymbol) &&
             (identical(other.draw, draw) || other.draw == draw) &&
@@ -337,8 +393,11 @@ class _$PartDetailModelImpl implements _PartDetailModel {
                 other.deadline == deadline) &&
             (identical(other.realizedQuantity, realizedQuantity) ||
                 other.realizedQuantity == realizedQuantity) &&
+            (identical(other.partId, partId) || other.partId == partId) &&
             (identical(other.partUniqueId, partUniqueId) ||
                 other.partUniqueId == partUniqueId) &&
+            (identical(other.comments, comments) ||
+                other.comments == comments) &&
             (identical(other.magazine, magazine) ||
                 other.magazine == magazine));
   }
@@ -352,12 +411,15 @@ class _$PartDetailModelImpl implements _PartDetailModel {
       quantity,
       contractor,
       mainOrder,
+      mainOrderId,
       partSymbol,
       draw,
       material,
       deadline,
       realizedQuantity,
+      partId,
       partUniqueId,
+      comments,
       magazine);
 
   @JsonKey(ignore: true)
@@ -382,12 +444,15 @@ abstract class _PartDetailModel implements PartDetailModel {
       @JsonKey(name: 'Quantity') required final double quantity,
       @JsonKey(name: 'Contractor') required final String contractor,
       @JsonKey(name: 'MainOrder') required final String mainOrder,
+      @JsonKey(name: 'MainOrderId') required final int mainOrderId,
       @JsonKey(name: 'PartSymbol') required final String partSymbol,
       @JsonKey(name: 'Draw') required final String? draw,
       @JsonKey(name: 'Material') required final String material,
       @JsonKey(name: 'Deadline') required final DateTime deadline,
       @JsonKey(name: 'RealizedQuantity') required final double realizedQuantity,
+      @JsonKey(name: 'PartId') required final int partId,
       @JsonKey(name: 'PartUniqueId') required final int partUniqueId,
+      @JsonKey(name: 'Comments') required final String comments,
       @JsonKey(name: 'Magazine')
       required final Magazine magazine}) = _$PartDetailModelImpl;
 
@@ -410,6 +475,9 @@ abstract class _PartDetailModel implements PartDetailModel {
   @JsonKey(name: 'MainOrder')
   String get mainOrder;
   @override
+  @JsonKey(name: 'MainOrderId')
+  int get mainOrderId;
+  @override
   @JsonKey(name: 'PartSymbol')
   String get partSymbol;
   @override
@@ -425,8 +493,14 @@ abstract class _PartDetailModel implements PartDetailModel {
   @JsonKey(name: 'RealizedQuantity')
   double get realizedQuantity;
   @override
+  @JsonKey(name: 'PartId')
+  int get partId;
+  @override
   @JsonKey(name: 'PartUniqueId')
   int get partUniqueId;
+  @override
+  @JsonKey(name: 'Comments')
+  String get comments;
   @override
   @JsonKey(name: 'Magazine')
   Magazine get magazine;

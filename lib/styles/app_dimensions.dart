@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 
 class AppDimensions {
   static const double defaultPadding = 16.0;
-  static const double defaultRadius = 12.0;
+  static const double buttonRadius = 14.0;
+  static const double searchBarRadius = 14.0;
+  static const double defaultRadius = 24.0;
   static final _Height height = _Height();
   static final _Margin margin = _Margin();
   static final _Padding padding = _Padding();
@@ -10,10 +12,10 @@ class AppDimensions {
 }
 
 class _Height {
-  final double actionButton = 46.0;
-  final double bottomSheetHeight = 320.0;
-  final double iconSize = 40.0;
-  final double textField = 54.0;
+  final double actionButton = 52.0;
+  final double bottomSheetHeight = 650.0;
+  final double iconSize = 28.0;
+  final double textField = 60.0;
   final double partDrawHeight = 240.0;
   final double dropDownButtonHeight = 46.0;
 }
@@ -31,4 +33,5 @@ class _Padding {
 
 class _Width {
   final double barCode = 250.0;
+  final double logo = 400.0;
 }

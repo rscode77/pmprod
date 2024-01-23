@@ -4,8 +4,9 @@ import 'package:pmprod/pages/pages.dart';
 
 class Routing {
   static const String _prefix = 'workPlan';
-  static const String login = '$_prefix/login';
+  static const String login = 'login';
   static const String partDetail = '$_prefix/partDetail';
+  static const String partInProgress = '$_prefix/partInProgress';
   static const String workPlan = _prefix;
   
   const Routing._();
@@ -29,6 +30,9 @@ class Routing {
         break;
       case partDetail:
         child = Pages.partDetail(arguments);
+        break;
+      case partInProgress:
+        child = Pages.partInProgress();
         break;
       default:
         return null;

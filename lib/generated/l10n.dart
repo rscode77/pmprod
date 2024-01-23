@@ -160,10 +160,10 @@ class S {
     );
   }
 
-  /// `Wprowadź aktualnie zrealizowaną ilość detali`
+  /// `Wprowadź sumę zrealizowanych detali`
   String get actualRealizedQuantity {
     return Intl.message(
-      'Wprowadź aktualnie zrealizowaną ilość detali',
+      'Wprowadź sumę zrealizowanych detali',
       name: 'actualRealizedQuantity',
       desc: '',
       args: [],
@@ -355,6 +355,146 @@ class S {
     return Intl.message(
       'Zlecenie',
       name: 'order',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Gięcie`
+  String get bending {
+    return Intl.message(
+      'Gięcie',
+      name: 'bending',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ilość detali zaktualizowana`
+  String get partQuantityUpdated {
+    return Intl.message(
+      'Ilość detali zaktualizowana',
+      name: 'partQuantityUpdated',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Nie udało się zaktualizować ilości detali`
+  String get partQuantityUpdatedFaild {
+    return Intl.message(
+      'Nie udało się zaktualizować ilości detali',
+      name: 'partQuantityUpdatedFaild',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Brakujące detale zgłoszone`
+  String get missingPartsReported {
+    return Intl.message(
+      'Brakujące detale zgłoszone',
+      name: 'missingPartsReported',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Nie udało się zgłosić brakujących detali`
+  String get missingPartsReportedFaild {
+    return Intl.message(
+      'Nie udało się zgłosić brakujących detali',
+      name: 'missingPartsReportedFaild',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Uwagi`
+  String get comments {
+    return Intl.message(
+      'Uwagi',
+      name: 'comments',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Wczytaj plan dnia`
+  String get loadWorkPlan {
+    return Intl.message(
+      'Wczytaj plan dnia',
+      name: 'loadWorkPlan',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Niezrealizowane`
+  String get notRealized {
+    return Intl.message(
+      'Niezrealizowane',
+      name: 'notRealized',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Czy chcesz rozpocząć realizację detalu?`
+  String get startRealizaton {
+    return Intl.message(
+      'Czy chcesz rozpocząć realizację detalu?',
+      name: 'startRealizaton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Rozpocznij`
+  String get start {
+    return Intl.message(
+      'Rozpocznij',
+      name: 'start',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Zakończ`
+  String get stop {
+    return Intl.message(
+      'Zakończ',
+      name: 'stop',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Części w trakcie realizacji`
+  String get partInProgress {
+    return Intl.message(
+      'Części w trakcie realizacji',
+      name: 'partInProgress',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Wróć`
+  String get back {
+    return Intl.message(
+      'Wróć',
+      name: 'back',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Brak rozpoczętych zleceń`
+  String get noStartedOrders {
+    return Intl.message(
+      'Brak rozpoczętych zleceń',
+      name: 'noStartedOrders',
       desc: '',
       args: [],
     );

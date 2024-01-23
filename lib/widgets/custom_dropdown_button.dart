@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pmprod/styles/app_colors.dart';
 import 'package:pmprod/styles/app_dimensions.dart';
 import 'package:pmprod/styles/app_text_styles.dart';
 
@@ -20,11 +21,12 @@ class _CustomDropDownButtonState extends State<CustomDropDownButton> {
       height: AppDimensions.height.dropDownButtonHeight,
       decoration: const BoxDecoration(
         borderRadius: BorderRadius.all(
-          Radius.circular(AppDimensions.defaultRadius),
+          Radius.circular(AppDimensions.buttonRadius),
         ),
         border: Border.fromBorderSide(
           BorderSide(
-            width: 0.6,
+            width: 1.0,
+            color: AppColors.grey200,
           ),
         ),
       ),

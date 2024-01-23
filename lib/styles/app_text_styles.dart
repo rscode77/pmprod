@@ -26,16 +26,46 @@ class AppTextStyles {
     );
   }
 
+  static TextStyle listViewText() {
+    return const TextStyle(
+      color: AppColors.blackPrimary,
+      fontSize: 14.0,
+    );
+  }
+
+  static TextStyle listViewTextBold() {
+    return const TextStyle(
+      color: AppColors.blackPrimary,
+      fontSize: 14.0,
+      fontWeight: FontWeight.bold,
+    );
+  }
+
   static TextStyle info() {
     return const TextStyle(
       color: AppColors.blackPrimary,
-      fontSize: 12.0,
+      fontSize: 14.0,
+    );
+  }
+
+  static TextStyle infoSmall() {
+    return const TextStyle(
+      color: AppColors.blackPrimary,
+      fontSize: 10.0,
+    );
+  }
+
+  static TextStyle quantityText() {
+    return const TextStyle(
+      color: AppColors.white,
+      fontSize: 16.0,
+      fontWeight: FontWeight.w400,
     );
   }
 
   static TextStyle textField() {
     return const TextStyle(
-      color: AppColors.black15,
+      color: AppColors.blackPrimary,
       fontSize: 14.0,
       fontWeight: FontWeight.normal,
     );
@@ -43,7 +73,7 @@ class AppTextStyles {
 
   static TextStyle textFieldError() {
     return const TextStyle(
-      color: AppColors.darkRed,
+      color: AppColors.red,
       fontSize: 13.0,
     );
   }
@@ -67,9 +97,9 @@ class AppTextStyles {
   }
 
   static TextStyle title({
-    Color color = AppColors.black,
+    Color color = AppColors.blackPrimary,
     TextDecoration? decoration,
-    double fontSize = 16.0,
+    double fontSize = 18.0,
     FontStyle? fontStyle,
     FontWeight fontWeight = FontWeight.w500,
     double? height,

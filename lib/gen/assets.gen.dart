@@ -9,20 +9,20 @@
 
 import 'package:flutter/widgets.dart';
 
-class $AssetsMocksGen {
-  const $AssetsMocksGen();
+class $AssetsSvgGen {
+  const $AssetsSvgGen();
 
-  /// File path: assets/mocks/mock.json
-  String get mock => 'assets/mocks/mock.json';
+  /// File path: assets/svg/logo_press.svg
+  String get logoPress => 'assets/svg/logo_press.svg';
 
   /// List of all assets
-  List<String> get values => [mock];
+  List<String> get values => [logoPress];
 }
 
 class Assets {
   Assets._();
 
-  static const $AssetsMocksGen mocks = $AssetsMocksGen();
+  static const $AssetsSvgGen svg = $AssetsSvgGen();
 }
 
 class AssetGenImage {
